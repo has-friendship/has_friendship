@@ -15,7 +15,7 @@ describe Friendship do
     describe ".check_one_side" do
       context "when a one-side friendship exists" do
         it "returns true" do
-          create_oneside_friendship(user, friend)
+          Friendship.create(friendable_id: user.id, friendable_type: user.class.base_class.name, friend_id: friend.id)
           expect(Friendship.check_one_side(user, friend)).to be true
         end
       end

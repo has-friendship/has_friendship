@@ -43,6 +43,18 @@ module HasFriendship
         end
       end
 
+      def accept_request(friend)
+        transaction do
+          pending_friendship = Friendship.find_by(friendable_id: friend.id, friendable_type: friend.class.base_class.name, friend_id: self.id)
+          pending_friendship.status = 'accepted'
+          pending_friendship.save
+
+          requeseted_friendship = Friendship.find_by(friendable_id: self.id, friendable_type: self.class.base_class.name, friend_id: friend.id)
+          requeseted_friendship.status = 'accepted'
+          requeseted_friendship.save
+        end
+      end
+
     end
   end
 end

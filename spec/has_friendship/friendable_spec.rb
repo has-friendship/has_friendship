@@ -14,7 +14,7 @@ describe Friendable do
 
   describe "instance methods" do
     
-    describe ".friend_request" do
+    describe "#friend_request" do
       it "should be provided" do
         expect(user).to respond_to(:friend_request)
       end
@@ -74,6 +74,38 @@ describe Friendable do
               expect(@friendship.status).to eq 'requested'
             end
           end
+        end
+      end
+    end
+
+    describe "#accept_request" do
+      it "should be provided" do
+        expect(user).to respond_to(:accept_request)
+      end
+
+      context "when there is no such request" do
+        it "raises error" do
+          expect { 
+            user.accept_request(friend)
+          }.to raise_error
+        end
+      end
+
+      context "when there is a request" do
+        it "should update the status of pending Friendship to 'accepted'" do
+          create_request(user, friend)
+          friend.accept_request(user)
+          friendship = find_friendship_record(user, friend) # status: 'pending'
+
+          expect(friendship.status).to eq 'accepted'
+        end
+
+        it "should update the status of requested Friendship to 'accepted'" do
+          create_request(user, friend)
+          friend.accept_request(user)
+          friendship = find_friendship_record(friend, user) #status: 'requested'
+
+          expect(friendship.status).to eq 'accepted'
         end
       end
     end
