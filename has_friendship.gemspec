@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.authors     = ["Sung Won Cho"]
   s.email       = ["mikeswcho@gmail.com"]
   s.homepage    = "https://github.com/sungwoncho/has_friendship"
-  s.summary     = "Add friendship"
+  s.summary     = "Add social network friendship feature to your Active Record models"
   s.license     = "MIT"
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
