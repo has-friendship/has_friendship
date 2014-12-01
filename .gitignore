@@ -6,3 +6,4 @@ spec/internal/db/*.sqlite3-journal
 spec/internal/log/*.log
 spec/internal/tmp/
 spec/internal/.sass-cache
+spec/internal/db/migrate/*
