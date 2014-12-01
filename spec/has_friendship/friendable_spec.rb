@@ -24,7 +24,7 @@ describe Friendable, focus: true do
         it "should not create Friendship" do
           expect { 
             user.friend_request(user)
-          }.to change(Friendship, :count).by(0)
+          }.to change(HasFriendship::Friendship, :count).by(0)
         end
       end
 
@@ -35,7 +35,7 @@ describe Friendable, focus: true do
 
             expect {
               user.friend_request(friend)
-            }.to change(Friendship, :count).by(0)
+            }.to change(HasFriendship::Friendship, :count).by(0)
           end
         end
 
@@ -43,7 +43,7 @@ describe Friendable, focus: true do
           it "should create 2 Friendship records" do
             expect { 
               user.friend_request(friend)
-            }.to change(Friendship, :count).by(2)
+            }.to change(HasFriendship::Friendship, :count).by(2)
           end
 
           it "should create requested_friends association" do
@@ -59,7 +59,7 @@ describe Friendable, focus: true do
           describe "Friendship from user to friend" do
             before :each do
               user.friend_request(friend)
-              @friendship = Friendship.find_by(friendable_id: user.id, friendable_type: user.class.base_class.name, friend_id: friend.id)
+              @friendship = HasFriendship::Friendship.find_by(friendable_id: user.id, friendable_type: user.class.base_class.name, friend_id: friend.id)
             end
 
             it "should be created" do
@@ -74,7 +74,7 @@ describe Friendable, focus: true do
           describe "Friendship from friend to user" do
             before :each do
               user.friend_request(friend)
-              @friendship = Friendship.find_by(friendable_id: friend.id, friendable_type: friend.class.base_class.name, friend_id: user.id)
+              @friendship = HasFriendship::Friendship.find_by(friendable_id: friend.id, friendable_type: friend.class.base_class.name, friend_id: user.id)
             end
 
             it "should be created" do
@@ -147,7 +147,7 @@ describe Friendable, focus: true do
           create_request(user, friend)
           expect {
             friend.decline_request(user)
-          }.to change(Friendship, :count).by(-2)
+          }.to change(HasFriendship::Friendship, :count).by(-2)
         end
       end
     end
@@ -162,7 +162,7 @@ describe Friendable, focus: true do
           create_friendship(user, friend)
           expect{ 
             user.remove_friend(friend)
-          }.to change(Friendship, :count).by(-2)
+          }.to change(HasFriendship::Friendship, :count).by(-2)
         end
       end
 
