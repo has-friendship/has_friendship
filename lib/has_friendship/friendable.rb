@@ -29,7 +29,7 @@ module HasFriendship
       end
 
       include HasFriendship::Friendable::InstanceMethods
-
+      include HasFriendship::Extender
     end
 
     module InstanceMethods
