@@ -5,13 +5,13 @@ describe HasFriendship do
 
   describe ".friendable?" do
     it "should be provided for models" do
-      expect(User).to respond_to(:friendable?)
+      expect(Friendable).to respond_to(:friendable?)
       expect(Unfriendable).to respond_to(:friendable?)
     end
 
     context "for friendable models" do
       it "should return true" do
-        expect(User).to be_friendable
+        expect(Friendable).to be_friendable
       end
     end
 

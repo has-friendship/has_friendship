@@ -5,7 +5,7 @@ require File.expand_path("../internal/config/environment", __FILE__)
 require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
 
-require File.expand_path("../../lib/has_friendship", __FILE__)
+require 'shoulda'
 
 load 'internal/db/schema.rb'
 
