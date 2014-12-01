@@ -13,6 +13,10 @@ describe Friendship do
   describe "class methods" do
 
     describe ".check_one_side" do
+      it "should be provided" do
+        expect(Friendship).to respond_to(:check_one_side)
+      end
+
       context "when a one-side friendship exists" do
         it "returns true" do
           Friendship.create(friendable_id: user.id, friendable_type: user.class.base_class.name, friend_id: friend.id)
@@ -28,6 +32,10 @@ describe Friendship do
     end
 
     describe ".exist?" do
+      it "should be provided" do
+        expect(Friendship).to respond_to(:exist?)
+      end
+
       context "when a friendship exists between user and friend" do
         it "returns true" do
           create_friendship(user, friend)
@@ -39,6 +47,19 @@ describe Friendship do
         it "returns false" do
           expect(Friendship.exist?(user, friend)).to be false
         end
+      end
+    end
+
+    describe ".find_friendship" do
+      it "should be provided" do
+        expect(Friendship).to respond_to(:find_friendship)
+      end
+
+      it "should find friendship" do
+        create_request(user, friend)
+        friendship = Friendship.find_by(friendable_id: user.id, friendable_type: user.class.base_class.name, friend_id: friend.id)
+
+        expect(Friendship.find_friendship(user, friend)).to eq friendship
       end
     end
   end

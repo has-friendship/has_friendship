@@ -45,11 +45,11 @@ module HasFriendship
 
       def accept_request(friend)
         transaction do
-          pending_friendship = Friendship.find_by(friendable_id: friend.id, friendable_type: friend.class.base_class.name, friend_id: self.id)
+          pending_friendship = Friendship.find_friendship(friend, self)
           pending_friendship.status = 'accepted'
           pending_friendship.save
 
-          requeseted_friendship = Friendship.find_by(friendable_id: self.id, friendable_type: self.class.base_class.name, friend_id: friend.id)
+          requeseted_friendship = Friendship.find_friendship(self, friend)
           requeseted_friendship.status = 'accepted'
           requeseted_friendship.save
         end
@@ -57,15 +57,15 @@ module HasFriendship
 
       def decline_request(friend)
         transaction do
-          Friendship.find_by(friendable_id: friend.id, friendable_type: friend.class.base_class.name, friend_id: self.id).destroy
-          Friendship.find_by(friendable_id: self.id, friendable_type: self.class.base_class.name, friend_id: friend.id).destroy
+          Friendship.find_friendship(friend, self).destroy
+          Friendship.find_friendship(self, friend).destroy
         end
       end
 
       def remove_friend(friend)
         transaction do
-          Friendship.find_by(friendable_id: friend.id, friendable_type: friend.class.base_class.name, friend_id: self.id).destroy
-          Friendship.find_by(friendable_id: self.id, friendable_type: self.class.base_class.name, friend_id: friend.id).destroy
+          Friendship.find_friendship(friend, self).destroy
+          Friendship.find_friendship(self, friend).destroy
         end
       end
 
