@@ -27,6 +27,22 @@ module HasFriendship
           true
         end
       end
+
+      include HasFriendship::Friendable::InstanceMethods
+
+    end
+
+    module InstanceMethods
+
+      def friend_request(friend)
+        unless self == friend || Friendship.exist?(self, friend)
+          transaction do
+            Friendship.create(friendable_id: self.id, friendable_type: self.class.base_class.name, friend_id: friend.id)
+            Friendship.create(friendable_id: friend.id, friendable_type: friend.class.base_class.name, friend_id: self.id)
+          end
+        end
+      end
+
     end
   end
 end
