@@ -20,17 +20,13 @@ ActiveRecord::Schema.define(version: 20141201035353) do
   end
 
   create_table "friendships", force: true do |t|
-    t.integer  "friender_id"
-    t.string   "friender_type"
-    t.integer  "friendee_id"
-    t.string   "friendee_type"
+    t.integer  "friendable_id"
+    t.string   "friendable_type"
+    t.integer  "friend_id"
     t.string   "status"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "friendships", ["friendee_id", "friendee_type"], name: "index_friendships_on_friendee_id_and_friendee_type"
-  add_index "friendships", ["friender_id", "friender_type"], name: "index_friendships_on_friender_id_and_friender_type"
 
   create_table "unfriendables", force: true do |t|
     t.string   "name"
