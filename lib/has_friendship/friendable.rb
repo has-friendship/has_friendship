@@ -10,16 +10,16 @@ module HasFriendship
       class_eval do
         has_many :friendships, dependent: :destroy
         has_many :friends, 
-                  -> { where(status: 'accepted') },
+                  -> { where friendships: { status: 'accepted' } },
                   through: :friendships
 
         has_many :requested_friends,
-                  -> { where(status: 'requested') },
+                  -> { where friendships: { status: 'requested' } },
                   through: :friendships,
                   source: :friend
 
         has_many :pending_friends,
-                  -> { where(status: 'pending') },
+                  -> { where friendships: { status: 'pending' } },
                   through: :friendships,
                   source: :friend
 

@@ -15,7 +15,7 @@ describe HasFriendship do
       end
     end
 
-    context "for unfiendable models" do
+    context "for unfriendable models" do
       it "should return false" do
         expect(Unfriendable).not_to be_friendable
       end

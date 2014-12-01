@@ -6,10 +6,11 @@ describe Friendable do
   let(:friend){ Friendable.create(name: 'Heisenberg') }
 
   describe "association" do
+    # TODO: find a way to test condition
     it { should have_many(:friendships).dependent(:destroy) }
-    it { should have_many(:friends).through(:friendships).conditions(status: 'accepted') }
-    it { should have_many(:requested_friends).through(:friendships).conditions(status: 'requested') }
-    it { should have_many(:pending_friends).through(:friendships).conditions(status: 'pending') }
+    it { should have_many(:friends).through(:friendships) }
+    it { should have_many(:requested_friends).through(:friendships) }
+    it { should have_many(:pending_friends).through(:friendships) }
   end
 
   describe "instance methods" do
@@ -43,6 +44,16 @@ describe Friendable do
             expect { 
               user.friend_request(friend)
             }.to change(Friendship, :count).by(2)
+          end
+
+          it "should create requested_friends association" do
+            user.friend_request(friend)
+            expect(friend.requested_friends).to include user
+          end
+
+          it "should create pending_friends association" do
+            user.friend_request(friend)
+            expect(user.pending_friends).to include friend
           end
 
           describe "Friendship from user to friend" do
@@ -92,6 +103,14 @@ describe Friendable do
       end
 
       context "when there is a request" do
+        it "should create friends association" do
+          create_request(user, friend)
+          friend.accept_request(user)
+
+          expect(user.friends).to match_array([friend])
+          expect(friend.friends).to match_array([user])
+        end
+
         it "should update the status of pending Friendship to 'accepted'" do
           create_request(user, friend)
           friend.accept_request(user)
