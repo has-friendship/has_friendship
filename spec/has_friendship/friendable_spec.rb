@@ -109,5 +109,28 @@ describe Friendable do
         end
       end
     end
+
+    describe "#decline_request" do
+      it "should be provided" do
+        expect(user).to respond_to(:decline_request)
+      end
+
+      context "when there is no such request" do
+        it "raises error" do
+          expect { 
+            user.decline_request(friend)
+          }.to raise_error
+        end
+      end
+
+      context "when there is a request" do
+        it "should destroy both the pending and requested Friendship" do
+          create_request(user, friend)
+          expect {
+            friend.decline_request(user)
+          }.to change(Friendship, :count).by(-2)
+        end
+      end
+    end
   end
 end
