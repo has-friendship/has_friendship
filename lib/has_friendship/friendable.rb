@@ -37,8 +37,8 @@ module HasFriendship
       def friend_request(friend)
         unless self == friend || Friendship.exist?(self, friend)
           transaction do
-            Friendship.create(friendable_id: self.id, friendable_type: self.class.base_class.name, friend_id: friend.id)
-            Friendship.create(friendable_id: friend.id, friendable_type: friend.class.base_class.name, friend_id: self.id)
+            Friendship.create(friendable_id: self.id, friendable_type: self.class.base_class.name, friend_id: friend.id, status: 'pending')
+            Friendship.create(friendable_id: friend.id, friendable_type: friend.class.base_class.name, friend_id: self.id, status: 'requested')
           end
         end
       end

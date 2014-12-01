@@ -39,11 +39,40 @@ describe Friendable do
         end
 
         context "if friendship does not yet exist" do
-          it "should create Friendship from user to friend" do
-            user.friend_request(friend)
-            friendship = Friendship.find_by(friendable_id: user.id, friendable_type: user.class.base_class.name, friend_id: friend.id)
+          it "should create 2 Friendship records" do
+            expect { 
+              user.friend_request(friend)
+            }.to change(Friendship, :count).by(2)
+          end
 
-            expect(friendship).to be_present
+          describe "Friendship from user to friend" do
+            before :each do
+              user.friend_request(friend)
+              @friendship = Friendship.find_by(friendable_id: user.id, friendable_type: user.class.base_class.name, friend_id: friend.id)
+            end
+
+            it "should be created" do
+              expect(@friendship).to be_present
+            end
+
+            it "should have status: 'pending'" do
+              expect(@friendship.status).to eq 'pending'
+            end
+          end
+
+          describe "Friendship from friend to user" do
+            before :each do
+              user.friend_request(friend)
+              @friendship = Friendship.find_by(friendable_id: friend.id, friendable_type: friend.class.base_class.name, friend_id: user.id)
+            end
+
+            it "should be created" do
+              expect(@friendship).to be_present
+            end
+
+            it "should have status: 'requested'" do
+              expect(@friendship.status).to eq 'requested'
+            end
           end
         end
       end
