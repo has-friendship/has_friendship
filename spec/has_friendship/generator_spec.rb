@@ -12,7 +12,7 @@ describe HasFriendshipGenerator, type: :generator do
   end
 
   after :all do
-    FileUtils.rm_r Dir.glob('tmp/*') # Clean up 'tmp/' after test
+    FileUtils.rm_r Dir.glob('spec/tmp/*') # Clean up 'tmp/' after test
   end
 
   specify { 
