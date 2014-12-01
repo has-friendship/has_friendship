@@ -132,5 +132,28 @@ describe Friendable do
         end
       end
     end
+
+    describe "#remove_friend" do
+      it "should be provided" do
+        expect(user).to respond_to(:remove_friend)
+      end
+
+      context "when there is Friendship" do
+        it "should destroy both of the Friendship records" do
+          create_friendship(user, friend)
+          expect{ 
+            user.remove_friend(friend)
+          }.to change(Friendship, :count).by(-2)
+        end
+      end
+
+      context "when there is no Friendship" do
+        it "raises error" do
+          expect { 
+            user.remove_friend(friend)
+          }.to raise_error
+        end
+      end
+    end
   end
 end

@@ -62,6 +62,13 @@ module HasFriendship
         end
       end
 
+      def remove_friend(friend)
+        transaction do
+          Friendship.find_by(friendable_id: friend.id, friendable_type: friend.class.base_class.name, friend_id: self.id).destroy
+          Friendship.find_by(friendable_id: self.id, friendable_type: self.class.base_class.name, friend_id: friend.id).destroy
+        end
+      end
+
     end
   end
 end
