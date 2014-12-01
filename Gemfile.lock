@@ -42,6 +42,9 @@ GEM
     erubis (2.7.0)
     ffi (1.9.6)
     formatador (0.2.5)
+    generator_spec (0.9.3)
+      activesupport (>= 3.0.0)
+      railties (>= 3.0.0)
     guard (2.10.0)
       formatador (>= 0.2.4)
       listen (~> 2.7)
@@ -141,6 +144,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  generator_spec
   guard-rspec
   has_friendship!
   rspec-rails
