@@ -1,11 +1,11 @@
 require 'rails_helper'
 
-describe HasFriendship::Friendship do
+describe HasFriendship::Friendship, focus: true do
 
-  let(:user){ HasFriendship::Friendship.create(name: 'Jessie') }
-  let(:friend){ HasFriendship::Friendship.create(name: 'Heisenberg') }
+  let(:user){ HasFriendship::Friendship.create() }
+  let(:friend){ HasFriendship::Friendship.create() }
 
-  describe "associations", focus: true do
+  describe "associations" do
     it { should belong_to(:friendable) }
     it { should belong_to(:friend).with_foreign_key(:friend_id) } # Why can't I use '.class_name('Friendable')'?
   end
