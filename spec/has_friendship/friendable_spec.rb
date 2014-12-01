@@ -1,13 +1,13 @@
 require 'rails_helper'
 
-describe Friendable do
+describe Friendable, focus: true do
 
   let(:user){ Friendable.create(name: 'Jessie') }
   let(:friend){ Friendable.create(name: 'Heisenberg') }
 
   describe "association" do
     # TODO: find a way to test condition
-    it { should have_many(:friendships).dependent(:destroy) }
+    it { should have_many(:friendships).class_name('HasFriendship::Friendship').dependent(:destroy) }
     it { should have_many(:friends).through(:friendships) }
     it { should have_many(:requested_friends).through(:friendships) }
     it { should have_many(:pending_friends).through(:friendships) }

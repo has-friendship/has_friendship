@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe HasFriendship::Friendship, focus: true do
+describe HasFriendship::Friendship do
 
   let(:user){ HasFriendship::Friendship.create() }
   let(:friend){ HasFriendship::Friendship.create() }
