@@ -1,4 +1,4 @@
-# HasFriendship
+# HasFriendship [![Build Status](https://travis-ci.org/sungwoncho/has_friendship.svg?branch=master)](https://travis-ci.org/sungwoncho/has_friendship) [![Coverage Status](https://coveralls.io/repos/sungwoncho/has_friendship/badge.png)](https://coveralls.io/r/sungwoncho/has_friendship)
 
 Add social network friendship feature to your Active Record models.
 
