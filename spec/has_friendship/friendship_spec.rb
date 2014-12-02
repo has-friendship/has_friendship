@@ -2,8 +2,8 @@ require 'rails_helper'
 
 describe HasFriendship::Friendship do
 
-  let(:user){ HasFriendship::Friendship.create() }
-  let(:friend){ HasFriendship::Friendship.create() }
+  let(:user){ User.create(name: "Jessie") }
+  let(:friend){ User.create(name: "Heisenberg") }
 
   describe "associations" do
     it { should belong_to(:friendable) }
