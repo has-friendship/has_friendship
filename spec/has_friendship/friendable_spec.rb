@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-describe Friendable, focus: true do
+describe User, focus: true do
 
-  let(:user){ Friendable.create(name: 'Jessie') }
-  let(:friend){ Friendable.create(name: 'Heisenberg') }
+  let(:user){ User.create(name: 'Jessie') }
+  let(:friend){ User.create(name: 'Heisenberg') }
 
   describe "association" do
     # TODO: find a way to test condition
