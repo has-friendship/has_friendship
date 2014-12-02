@@ -8,7 +8,7 @@ module HasFriendship
     def has_friendship
       
       class_eval do
-        has_many :friendships, class_name: "HasFriendship::Friendship", dependent: :destroy
+        has_many :friendships, as: :friendable, class_name: "HasFriendship::Friendship", dependent: :destroy
         has_many :friends, 
                   -> { where friendships: { status: 'accepted' } },
                   through: :friendships
