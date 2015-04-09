@@ -85,7 +85,7 @@ Instances with accepted Friendship.
 
 ```ruby
 @mac.friend_request(@dee)
-@dee.accpet_request(@mac)
+@dee.accept_request(@mac)
 
 @mac.friends # => [@dee]
 @dee.friends # => [@mac]
