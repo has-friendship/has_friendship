@@ -93,4 +93,4 @@ Instances with accepted Friendship.
 
 ## Contributing
 
-Issues and pull reqeusts are welcomed.
+Issues and pull requests are welcomed.
