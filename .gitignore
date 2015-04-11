@@ -9,3 +9,4 @@ spec/internal/.sass-cache
 spec/internal/db/migrate/*
 spec/tmp/*
 coverage/
+tmp/
