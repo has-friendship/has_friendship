@@ -1,8 +1,8 @@
 # HasFriendship [![Build Status](https://travis-ci.org/sungwoncho/has_friendship.svg?branch=master)](https://travis-ci.org/sungwoncho/has_friendship) [![Coverage Status](https://coveralls.io/repos/sungwoncho/has_friendship/badge.png?branch=master)](https://coveralls.io/r/sungwoncho/has_friendship?branch=master)
 
-Add social network friendship feature to your Active Record models.
+Add friendship features to your ActiveRecord models.
 
-*HasFriendship* allows objects in a model to send, accept, and decline friend requests using self-refernetial polymorphic association.
+*HasFriendship* allows ActiveRecord objects to send, accept, and decline friend requests using self-refernetial polymorphic association.
 
 ## Getting started
 
