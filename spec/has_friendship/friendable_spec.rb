@@ -14,7 +14,7 @@ describe User, focus: true do
   end
 
   describe "instance methods" do
-    
+
     describe "#friend_request" do
       it "should be provided" do
         expect(user).to respond_to(:friend_request)
@@ -22,7 +22,7 @@ describe User, focus: true do
 
       context "when user requests friendship to itself" do
         it "should not create Friendship" do
-          expect { 
+          expect {
             user.friend_request(user)
           }.to change(HasFriendship::Friendship, :count).by(0)
         end
@@ -41,7 +41,7 @@ describe User, focus: true do
 
         context "if friendship does not yet exist" do
           it "should create 2 Friendship records" do
-            expect { 
+            expect {
               user.friend_request(friend)
             }.to change(HasFriendship::Friendship, :count).by(2)
           end
@@ -96,7 +96,7 @@ describe User, focus: true do
 
       context "when there is no such request" do
         it "raises error" do
-          expect { 
+          expect {
             user.accept_request(friend)
           }.to raise_error
         end
@@ -136,7 +136,7 @@ describe User, focus: true do
 
       context "when there is no such request" do
         it "raises error" do
-          expect { 
+          expect {
             user.decline_request(friend)
           }.to raise_error
         end
@@ -160,7 +160,7 @@ describe User, focus: true do
       context "when there is Friendship" do
         it "should destroy both of the Friendship records" do
           create_friendship(user, friend)
-          expect{ 
+          expect{
             user.remove_friend(friend)
           }.to change(HasFriendship::Friendship, :count).by(-2)
         end
@@ -168,9 +168,18 @@ describe User, focus: true do
 
       context "when there is no Friendship" do
         it "raises error" do
-          expect { 
+          expect {
             user.remove_friend(friend)
           }.to raise_error
+        end
+      end
+    end
+
+    describe '#friends_with?' do
+      context 'when accepted friendship exists' do
+        it 'returns true' do
+          create_friendship(user, friend)
+          expect(user.friends_with?(friend)).to eq true
         end
       end
     end

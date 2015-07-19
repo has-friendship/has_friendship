@@ -10,7 +10,7 @@ module HasFriendship
     end
 
     def self.find_friendship(friendable, friend)
-      HasFriendship::Friendship.find_by(friendable_id: friendable.id, friendable_type: friendable.class.base_class.name, friend_id: friend.id)
+      find_by(friendable_id: friendable.id, friendable_type: friendable.class.base_class.name, friend_id: friend.id)
     end
   end
 end
