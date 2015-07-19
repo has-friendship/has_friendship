@@ -35,9 +35,12 @@ GEM
       tzinfo (~> 1.1)
     arel (5.0.1.20140414130214)
     builder (3.2.2)
+    byebug (5.0.0)
+      columnize (= 0.9.0)
     celluloid (0.16.0)
       timers (~> 4.0.0)
     coderay (1.1.0)
+    columnize (0.9.0)
     coveralls (0.7.1)
       multi_json (~> 1.3)
       rest-client
@@ -163,6 +166,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  byebug
   coveralls
   generator_spec
   guard-rspec
@@ -170,3 +174,6 @@ DEPENDENCIES
   rspec-rails
   shoulda
   sqlite3
+
+BUNDLED WITH
+   1.10.3

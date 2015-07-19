@@ -6,10 +6,10 @@ module HasFriendship
     end
 
     def has_friendship
-      
+
       class_eval do
         has_many :friendships, as: :friendable, class_name: "HasFriendship::Friendship", dependent: :destroy
-        has_many :friends, 
+        has_many :friends,
                   -> { where friendships: { status: 'accepted' } },
                   through: :friendships
 
@@ -67,6 +67,10 @@ module HasFriendship
           HasFriendship::Friendship.find_friendship(friend, self).destroy
           HasFriendship::Friendship.find_friendship(self, friend).destroy
         end
+      end
+
+      def friends_with?(friend)
+        HasFriendship::Friendship.where(friend_id: friend.id, status: 'accepted').present?
       end
 
     end
