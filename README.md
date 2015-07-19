@@ -30,9 +30,9 @@ class User < ActiveRecord::Base
 end
 ```
 
-#### Friend request
+### Managing friendship
 
-Now, User instances can send, accept, and decline friend requests:
+Now, instances of `User` can send, accept, and decline friend requests:
 
 ```ruby
 @mac = User.create(name: "Mac")
@@ -55,13 +55,27 @@ A Friendship can also be removed:
 @dee.remove_friend(@mac)
 ```
 
-#### Type of friends
+### Checking friendship
 
-There are three types of friends. They can be accessed using association:
+```ruby
+# Check if there is an accepted friendship between @mac and @dee
+@mac.friends_with?(@dee)
+```
 
-* `requested_friends`
+### Type of friends
 
-Instances that sent friend request that has not been accepted yet.
+There are three types of friends:
+
+* requested_friends
+* pending_friends
+* friends
+
+They can be accessed using association.
+
+
+#### requested_friends
+
+Instances that sent friend request that has not been accepted.
 
 ```ruby
 @mac.friend_request(@dee)
@@ -69,9 +83,9 @@ Instances that sent friend request that has not been accepted yet.
 @dee.requested_friends # => [@mac]
 ```
 
-* `pending_friends`
+#### pending_friends
 
-Instances that received but has not accepted the friend request yet.
+Instances that received but has not accepted the friend request.
 
 ```ruby
 @mac.friend_request(@dee)
@@ -79,7 +93,7 @@ Instances that received but has not accepted the friend request yet.
 @mac.pending_friends # => [@dee]
 ```
 
-* `friends`
+#### friends
 
 Instances with accepted Friendship.
 
