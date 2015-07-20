@@ -182,6 +182,14 @@ describe User, focus: true do
           expect(user.friends_with?(friend)).to eq true
         end
       end
+
+      context 'when accepted friendship does not exist' do
+        it 'returns false' do
+          create_friendship(user, friend)
+          jon = User.create(name: 'jon')
+          expect(jon.friends_with?(user)).to eq false
+        end
+      end
     end
   end
 end

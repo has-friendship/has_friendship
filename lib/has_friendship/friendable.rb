@@ -70,7 +70,7 @@ module HasFriendship
       end
 
       def friends_with?(friend)
-        HasFriendship::Friendship.where(friend_id: friend.id, status: 'accepted').present?
+        HasFriendship::Friendship.where(friendable_id: self.id, friend_id: friend.id, status: 'accepted').present?
       end
 
     end
