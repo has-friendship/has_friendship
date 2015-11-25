@@ -50,21 +50,21 @@ module HasFriendship
       end
 
       def accept_request(friend)
-        friend_engine do |one, other|
+        friend_engine(friend) do |one, other|
            HasFriendship::Friendship.find_friendship(one, other).update(status: 'accepted' )
         end
       end
 
       def decline_request(friend)
-        friend_engine do |one, other|
-          HasFriendship::Friendship.find_friendship(friend, self).destroy
+        friend_engine(friend) do |one, other|
+          HasFriendship::Friendship.find_friendship(one, other).destroy
         end
       end
 
-      alias_method :decline_request, :remove_friend
+      alias_method :remove_friend, :decline_request
 
       def block_friend(friend)
-        friend_engine do |one, other|
+        friend_engine(friend) do |one, other|
           HasFriendship::Friendship.find_friendship(one, other).update(status: 'blocked' )
         end
       end

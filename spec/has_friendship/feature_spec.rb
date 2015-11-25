@@ -22,9 +22,10 @@ describe "HasFriendship API" do
 
     context "when accepted" do
       it "should create friends association" do
+
+
         user.friend_request(friend)
         friend.accept_request(user)
-
         expect(user.friends).to include friend
         expect(friend.friends).to include user
       end

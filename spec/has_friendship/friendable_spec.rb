@@ -175,6 +175,31 @@ describe User, focus: true do
       end
     end
 
+    describe "#block_friend" do
+      it "should be provided" do
+        expect(user).to respond_to(:block_friend)
+      end
+
+      context "when friend is blocked" do
+
+        it "should no longer be friends" do
+          create_friendship(user, friend)
+          user.block_friend(friend)
+          expect(HasFriendship::Friendship.find_friendship(user, friend).present?).to eq false
+        end
+
+        it "should remain in the database" do
+          create_friendship(user, friend)
+          user.block_friend(friend)
+          expect(find_friendship_record(user,friend).present?).to eq true
+        end
+
+      end
+
+    end
+
+
+
     describe '#friends_with?' do
       context 'when accepted friendship exists' do
         it 'returns true' do
