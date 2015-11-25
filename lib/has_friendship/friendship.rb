@@ -10,7 +10,11 @@ module HasFriendship
     end
 
     def self.find_friendship(friendable, friend)
-      find_by(friendable_id: friendable.id, friendable_type: friendable.class.base_class.name, friend_id: friend.id)
+      where(friendable_id: friendable.id, friendable_type: friendable.class.base_class.name, friend_id: friend.id).where("status != ?", "blocked")
+    end
+
+    def self.find_relations(friendable, friend)
+      where(friendable_id: friendable.id, friendable_type: friendable.class.base_class.name, friend_id: friend.id)
     end
   end
 end

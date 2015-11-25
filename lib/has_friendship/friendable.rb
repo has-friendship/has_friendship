@@ -9,6 +9,12 @@ module HasFriendship
 
       class_eval do
         has_many :friendships, as: :friendable, class_name: "HasFriendship::Friendship", dependent: :destroy
+
+        has_many :blocked_friends,
+                  -> { where friendships: { status: 'blocked' } },
+                  through: :friendships
+
+
         has_many :friends,
                   -> { where friendships: { status: 'accepted' } },
                   through: :friendships
@@ -44,28 +50,30 @@ module HasFriendship
       end
 
       def accept_request(friend)
-        transaction do
-          pending_friendship = HasFriendship::Friendship.find_friendship(friend, self)
-          pending_friendship.status = 'accepted'
-          pending_friendship.save
-
-          requeseted_friendship = HasFriendship::Friendship.find_friendship(self, friend)
-          requeseted_friendship.status = 'accepted'
-          requeseted_friendship.save
+        friend_engine do |one, other|
+           HasFriendship::Friendship.find_friendship(one, other).update(status: 'accepted' )
         end
       end
 
       def decline_request(friend)
-        transaction do
+        friend_engine do |one, other|
           HasFriendship::Friendship.find_friendship(friend, self).destroy
-          HasFriendship::Friendship.find_friendship(self, friend).destroy
         end
       end
 
-      def remove_friend(friend)
+      alias_method :decline_request, :remove_friend
+
+      def block_friend(friend)
+        friend_engine do |one, other|
+          HasFriendship::Friendship.find_friendship(one, other).update(status: 'blocked' )
+        end
+      end
+
+
+      def friend_engine(friend)
         transaction do
-          HasFriendship::Friendship.find_friendship(friend, self).destroy
-          HasFriendship::Friendship.find_friendship(self, friend).destroy
+          yield(self, friend)
+          yield(friend, self)
         end
       end
 
