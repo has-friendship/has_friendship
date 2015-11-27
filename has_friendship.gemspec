@@ -25,6 +25,6 @@ Gem::Specification.new do |s|
   s.add_development_dependency "coveralls"
   s.add_development_dependency "byebug"
   # fix time zone error when opening server
-  s.add_development_dependency 'tzinfo-data' if RUBY_PLATFORM ==  "x64-mingw32"
+  s.add_development_dependency 'tzinfo-data'
 
 end
