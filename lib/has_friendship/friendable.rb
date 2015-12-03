@@ -43,34 +43,33 @@ module HasFriendship
       def friend_request(friend)
         unless self == friend || HasFriendship::Friendship.exist?(self, friend)
           transaction do
-            HasFriendship::Friendship.create(friendable_id: self.id, friendable_type: self.class.base_class.name, friend_id: friend.id, status: 'pending')
-            HasFriendship::Friendship.create(friendable_id: friend.id, friendable_type: friend.class.base_class.name, friend_id: self.id, status: 'requested')
+            HasFriendship::Friendship.create_relation(self, friend, status: 'pending')
+            HasFriendship::Friendship.create_relation(friend, self, status: 'requested')
           end
         end
       end
 
       def accept_request(friend)
-        friend_engine(friend) do |one, other|
-           HasFriendship::Friendship.find_friendship(one, other).update(status: 'accepted' )
+        on_relation_with(friend) do |one, other|
+           HasFriendship::Friendship.find_viable_friendship(one, other).update(status: 'accepted' )
         end
       end
 
       def decline_request(friend)
-        friend_engine(friend) do |one, other|
-          HasFriendship::Friendship.find_friendship(one, other).destroy
+        on_relation_with(friend) do |one, other|
+          HasFriendship::Friendship.find_viable_friendship(one, other).destroy
         end
       end
 
       alias_method :remove_friend, :decline_request
 
       def block_friend(friend)
-        friend_engine(friend) do |one, other|
-          HasFriendship::Friendship.find_friendship(one, other).update(status: 'blocked' )
+        on_relation_with(friend) do |one, other|
+          HasFriendship::Friendship.find_viable_friendship(one, other).update(status: 'blocked' )
         end
       end
 
-
-      def friend_engine(friend)
+      def on_relation_with(friend)
         transaction do
           yield(self, friend)
           yield(friend, self)
@@ -78,7 +77,7 @@ module HasFriendship
       end
 
       def friends_with?(friend)
-        HasFriendship::Friendship.where(friendable_id: self.id, friend_id: friend.id, status: 'accepted').present?
+        HasFriendship::Friendship.find_friend.any?
       end
 
     end
