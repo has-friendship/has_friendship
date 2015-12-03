@@ -2,9 +2,7 @@ module HasFriendship
   class Friendship < ActiveRecord::Base
 
     def self.relation_attributes(one, other)
-      {friendable_id: one.id,
-       friendable_type: one.class.base_class.name,
-      friend_id: other.id}
+      {friendable_id: one.id, friendable_type: one.class.base_class.name, friend_id: other.id}
     end
 
     def self.create_relation(one, other, options)
