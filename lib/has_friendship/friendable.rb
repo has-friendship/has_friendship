@@ -14,7 +14,6 @@ module HasFriendship
                   -> { where friendships: { status: 'blocked' } },
                   through: :friendships
 
-
         has_many :friends,
                   -> { where friendships: { status: 'accepted' } },
                   through: :friendships
@@ -51,7 +50,7 @@ module HasFriendship
 
       def accept_request(friend)
         on_relation_with(friend) do |one, other|
-           HasFriendship::Friendship.find_viable_friendship(one, other).update(status: 'accepted' )
+          HasFriendship::Friendship.find_viable_friendship(one, other).update(status: 'accepted' )
         end
       end
 
@@ -77,7 +76,7 @@ module HasFriendship
       end
 
       def friends_with?(friend)
-        HasFriendship::Friendship.find_friend.any?
+        HasFriendship::Friendship.find_friend(self, friend).any?
       end
 
     end
