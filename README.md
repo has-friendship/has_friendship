@@ -20,6 +20,12 @@ The generator will copy a migration that creates `friendships` table. Run the mi
 
     $ rake db:migrate
 
+### Upgrading to 0.1.0
+
+`0.1.0` adds a blocking feature for friendables. This requires an additional
+column in the `friendships` table, and a migration should be run. You will need
+to run the generator and run the new migration.
+
 ## Usage
 
 Simply drop in `has_friendship` to a model:
