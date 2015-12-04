@@ -48,11 +48,27 @@ Now, instances of `User` can send, accept, and decline friend requests:
 @dee.decline_request(@mac)
 ```
 
-A Friendship can also be removed:
+A friendship can also be removed:
 
 ```ruby
 # @dee removes @mac from its friends
 @dee.remove_friend(@mac)
+```
+
+### Blocking a friendable
+
+A friendable can be blocked. When blocked, the friendable cannot request or
+remove friendship to the one that initially blocked it.
+
+```ruby
+@dee.request_friend(@mac)
+
+# @mac blocks @dee from making any more friendship actions
+@mac.block_friend(@dee)
+
+# @mac unblocks @dee
+# Only @mac can perform this action
+@mac.unblock_friend(@dee)
 ```
 
 ### Checking friendship
@@ -64,14 +80,14 @@ A Friendship can also be removed:
 
 ### Type of friends
 
-There are three types of friends:
+There are four types of friends:
 
 * requested_friends
 * pending_friends
+* blocked_friends
 * friends
 
 They can be accessed using association.
-
 
 #### requested_friends
 
@@ -91,6 +107,17 @@ Instances that received but has not accepted the friend request.
 @mac.friend_request(@dee)
 
 @mac.pending_friends # => [@dee]
+```
+
+#### blocked_friends
+
+Instances that are blocked from taking any friendship actions
+
+```ruby
+@dee.friend_request(@mac)
+@mac.block_friend(@dee)
+
+@mac.blocked_friends # => [@dee]
 ```
 
 #### friends
