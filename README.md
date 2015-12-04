@@ -138,6 +138,11 @@ Instances with accepted Friendship.
 @dee.friends # => [@mac]
 ```
 
-## Contributing
+## Roadmap
 
-Issues and pull requests are welcomed.
+Thanks for all the contributors. Pull requests are encouraged for the following
+features.
+
+* Make a separate table/model for friendship blocking records, with `blocker_id`
+and `blockee_id`. Currently, `Friendship` model is kind of bloated.
+* Implement state machine for friendship status.
