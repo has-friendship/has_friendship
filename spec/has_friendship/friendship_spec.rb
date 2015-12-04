@@ -42,5 +42,22 @@ describe HasFriendship::Friendship do
         expect(HasFriendship::Friendship.find_unblocked_friendship(user, friend)).to eq friendship
       end
     end
+
+    describe ".find_blocked_friendship" do
+      it "should find a blocked friendship" do
+        create_friendship(user, friend, status: 'blocked', blocker_id: user.id)
+        friendship = find_friendship_record(user, friend)
+
+        expect(HasFriendship::Friendship.find_blocked_friendship(user, friend)).to eq friendship
+      end
+    end
+
+    describe '.find_one_side' do
+      it 'finds a friendship record' do
+        create_request(user, friend)
+        friendship = find_friendship_record(user, friend)
+        expect(HasFriendship::Friendship.find_one_side(user, friend)).to eq friendship
+      end
+    end
   end
 end

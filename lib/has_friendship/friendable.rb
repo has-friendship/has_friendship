@@ -70,6 +70,13 @@ module HasFriendship
         end
       end
 
+      def unblock_friend(friend)
+        return unless has_blocked(friend)
+        on_relation_with(friend) do |one, other|
+          HasFriendship::Friendship.find_blocked_friendship(one, other).destroy
+        end
+      end
+
       def on_relation_with(friend)
         transaction do
           yield(self, friend)
@@ -79,6 +86,12 @@ module HasFriendship
 
       def friends_with?(friend)
         HasFriendship::Friendship.find_relation(self, friend).any?
+      end
+
+      private
+
+      def has_blocked(friend)
+        HasFriendship::Friendship.find_one_side(self, friend).blocker_id == self.id
       end
     end
   end

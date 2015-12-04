@@ -210,6 +210,30 @@ describe User, focus: true do
       end
     end
 
+    describe '#unblock_friend' do
+      it 'should be provided' do
+        expect(user).to respond_to(:unblock_friend)
+      end
+
+      context 'if user blocked the friendable' do
+        it 'removes the blocked friendship' do
+          create_friendship(user, friend, status: 'blocked', blocker_id: user.id)
+          expect {
+            user.unblock_friend(friend)
+          }.to change(HasFriendship::Friendship, :count).by(-2)
+        end
+      end
+
+      context 'if user is blocked by the Friendable' do
+        it 'does not remove the blocked friendship' do
+          create_friendship(user, friend, status: 'blocked', blocker_id: friend.id)
+          expect {
+            user.unblock_friend(friend)
+          }.to change(HasFriendship::Friendship, :count).by(0)
+        end
+      end
+    end
+
     describe '#friends_with?' do
       context 'when accepted friendship exists' do
         it 'returns true' do
