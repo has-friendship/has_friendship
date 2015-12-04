@@ -98,7 +98,7 @@ describe User, focus: true do
         it "raises error" do
           expect {
             user.accept_request(friend)
-          }.to raise_error
+          }.to raise_error(NoMethodError)
         end
       end
 
@@ -138,7 +138,7 @@ describe User, focus: true do
         it "raises error" do
           expect {
             user.decline_request(friend)
-          }.to raise_error
+          }.to raise_error(NoMethodError)
         end
       end
 
@@ -170,7 +170,7 @@ describe User, focus: true do
         it "raises error" do
           expect {
             user.remove_friend(friend)
-          }.to raise_error
+          }.to raise_error(NoMethodError)
         end
       end
     end
