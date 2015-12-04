@@ -50,16 +50,16 @@ describe HasFriendship::Friendship do
       end
     end
 
-    describe ".find_friendship" do
+    describe ".find_viable_friendship" do
       it "should be provided" do
-        expect(HasFriendship::Friendship).to respond_to(:find_friendship)
+        expect(HasFriendship::Friendship).to respond_to(:find_viable_friendship)
       end
 
       it "should find friendship" do
         create_request(user, friend)
         friendship = HasFriendship::Friendship.find_by(friendable_id: user.id, friendable_type: user.class.base_class.name, friend_id: friend.id)
 
-        expect(HasFriendship::Friendship.find_friendship(user, friend)).to eq friendship
+        expect(HasFriendship::Friendship.find_viable_friendship(user, friend)).to eq friendship
       end
     end
   end

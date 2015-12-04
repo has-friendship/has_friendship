@@ -114,7 +114,7 @@ describe User, focus: true do
         it "should update the status of pending Friendship to 'accepted'" do
           create_request(user, friend)
           friend.accept_request(user)
-          friendship = find_friendship_record(user, friend) # status: 'pending'
+          friendship = find_viable_friendship_record(user, friend) # status: 'pending'
 
           expect(friendship.status).to eq 'accepted'
         end
@@ -122,7 +122,7 @@ describe User, focus: true do
         it "should update the status of requested Friendship to 'accepted'" do
           create_request(user, friend)
           friend.accept_request(user)
-          friendship = find_friendship_record(friend, user) #status: 'requested'
+          friendship = find_viable_friendship_record(friend, user) #status: 'requested'
 
           expect(friendship.status).to eq 'accepted'
         end
@@ -174,6 +174,31 @@ describe User, focus: true do
         end
       end
     end
+
+    describe "#block_friend" do
+      it "should be provided" do
+        expect(user).to respond_to(:block_friend)
+      end
+
+      context "when friend is blocked" do
+
+        it "should no longer be friends" do
+          create_friendship(user, friend)
+          user.block_friend(friend)
+          expect(HasFriendship::Friendship.find_viable_friendship(user, friend).present?).to eq false
+        end
+
+        it "should remain in the database" do
+          create_friendship(user, friend)
+          user.block_friend(friend)
+          expect(find_viable_friendship_record(user,friend).present?).to eq true
+        end
+
+      end
+
+    end
+
+
 
     describe '#friends_with?' do
       context 'when accepted friendship exists' do

@@ -9,7 +9,7 @@ module FriendshipMacros
     HasFriendship::Friendship.create(friendable_id: friend.id, friendable_type: friend.class.base_class.name, friend_id: friendable.id, status: 'accepted')
   end
 
-  def find_friendship_record(friendable, friend)
+  def find_viable_friendship_record(friendable, friend)
     HasFriendship::Friendship.find_by(friendable_id: friendable.id, friendable_type: friendable.class.base_class.name, friend_id: friend.id)
   end
 end
