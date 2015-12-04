@@ -66,7 +66,7 @@ module HasFriendship
       def block_friend(friend)
         on_relation_with(friend) do |one, other|
           HasFriendship::Friendship.find_unblocked_friendship(one, other)
-                                   .update(status: 'blocked')
+                                   .update(status: 'blocked', blocker_id: self.id)
         end
       end
 

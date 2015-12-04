@@ -13,6 +13,9 @@ class HasFriendshipGenerator < Rails::Generators::Base
   end
 
   def create_migration_file
-    migration_template 'migration.rb', 'db/migrate/create_friendships.rb'
+    migration_template 'create_friendships.rb',
+                       'db/migrate/create_friendships.rb'
+    migration_template 'add_blocker_id_to_friendships.rb',
+                       'db/migrate/add_blocker_id_to_friendships.rb'
   end
 end

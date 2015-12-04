@@ -15,13 +15,14 @@ describe HasFriendshipGenerator, type: :generator do
     FileUtils.rm_r Dir.glob('spec/tmp/*') # Clean up 'tmp/' after test
   end
 
-  specify { 
-    expect(destination_root).to have_structure { 
+  specify {
+    expect(destination_root).to have_structure {
       directory "db" do
         directory "migrate" do
           migration "create_friendships"
+          migration "add_blocker_id_to_friendships"
         end
       end
     }
   }
-end 
+end

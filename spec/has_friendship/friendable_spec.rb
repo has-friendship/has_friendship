@@ -20,6 +20,15 @@ describe User, focus: true do
         expect(user).to respond_to(:friend_request)
       end
 
+      context 'when there friend requester is blocked by friendable' do
+        it 'should not create Friendship' do
+          create_friendship(user, friend, status: 'blocked')
+          expect {
+            user.friend_request(friend)
+          }.to change(HasFriendship::Friendship, :count).by(0)
+        end
+      end
+
       context "when user requests friendship to itself" do
         it "should not create Friendship" do
           expect {
@@ -181,7 +190,6 @@ describe User, focus: true do
       end
 
       context "when friend is blocked" do
-
         it "should no longer be friends" do
           create_friendship(user, friend)
           user.block_friend(friend)
@@ -194,11 +202,13 @@ describe User, focus: true do
           expect(find_friendship_record(user,friend).present?).to eq true
         end
 
+        it 'saves who blocked the friendable' do
+          create_friendship(user, friend)
+          user.block_friend(friend)
+          expect(find_friendship_record(user, friend).blocker_id).to eq user.id
+        end
       end
-
     end
-
-
 
     describe '#friends_with?' do
       context 'when accepted friendship exists' do
