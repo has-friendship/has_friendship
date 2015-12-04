@@ -11,26 +11,6 @@ describe HasFriendship::Friendship do
   end
 
   describe "class methods" do
-
-    describe ".check_one_side" do
-      it "should be provided" do
-        expect(HasFriendship::Friendship).to respond_to(:check_one_side)
-      end
-
-      context "when a one-side friendship exists" do
-        it "returns true" do
-          HasFriendship::Friendship.create(friendable_id: user.id, friendable_type: user.class.base_class.name, friend_id: friend.id)
-          expect(HasFriendship::Friendship.check_one_side(user, friend)).to be true
-        end
-      end
-
-      context "when there is not one-side friendship" do
-        it "returns false" do
-          expect(HasFriendship::Friendship.check_one_side(user, friend)).to be false
-        end
-      end
-    end
-
     describe ".exist?" do
       it "should be provided" do
         expect(HasFriendship::Friendship).to respond_to(:exist?)
@@ -50,16 +30,16 @@ describe HasFriendship::Friendship do
       end
     end
 
-    describe ".find_viable_friendship" do
+    describe ".find_unblocked_friendship" do
       it "should be provided" do
-        expect(HasFriendship::Friendship).to respond_to(:find_viable_friendship)
+        expect(HasFriendship::Friendship).to respond_to(:find_unblocked_friendship)
       end
 
       it "should find friendship" do
         create_request(user, friend)
         friendship = HasFriendship::Friendship.find_by(friendable_id: user.id, friendable_type: user.class.base_class.name, friend_id: friend.id)
 
-        expect(HasFriendship::Friendship.find_viable_friendship(user, friend)).to eq friendship
+        expect(HasFriendship::Friendship.find_unblocked_friendship(user, friend)).to eq friendship
       end
     end
   end

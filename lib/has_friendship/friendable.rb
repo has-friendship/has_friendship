@@ -6,9 +6,9 @@ module HasFriendship
     end
 
     def has_friendship
-
       class_eval do
-        has_many :friendships, as: :friendable, class_name: "HasFriendship::Friendship", dependent: :destroy
+        has_many :friendships, as: :friendable,
+                 class_name: "HasFriendship::Friendship", dependent: :destroy
 
         has_many :blocked_friends,
                   -> { where friendships: { status: 'blocked' } },
@@ -50,13 +50,14 @@ module HasFriendship
 
       def accept_request(friend)
         on_relation_with(friend) do |one, other|
-          HasFriendship::Friendship.find_viable_friendship(one, other).update(status: 'accepted' )
+          HasFriendship::Friendship.find_unblocked_friendship(one, other)
+                                   .update(status: 'accepted')
         end
       end
 
       def decline_request(friend)
         on_relation_with(friend) do |one, other|
-          HasFriendship::Friendship.find_viable_friendship(one, other).destroy
+          HasFriendship::Friendship.find_unblocked_friendship(one, other).destroy
         end
       end
 
@@ -64,7 +65,8 @@ module HasFriendship
 
       def block_friend(friend)
         on_relation_with(friend) do |one, other|
-          HasFriendship::Friendship.find_viable_friendship(one, other).update(status: 'blocked' )
+          HasFriendship::Friendship.find_unblocked_friendship(one, other)
+                                   .update(status: 'blocked')
         end
       end
 
@@ -76,9 +78,8 @@ module HasFriendship
       end
 
       def friends_with?(friend)
-        HasFriendship::Friendship.find_friend(self, friend).any?
+        HasFriendship::Friendship.find_relation(self, friend).any?
       end
-
     end
   end
 end

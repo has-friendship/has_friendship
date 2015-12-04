@@ -7,7 +7,6 @@ describe "HasFriendship API" do
   let(:friend){ User.create(name: "Heisenberg") }
 
 	describe "Friend request" do
-
     context "when sent" do
       it "should create pending_friends association" do
         user.friend_request(friend)
@@ -22,8 +21,6 @@ describe "HasFriendship API" do
 
     context "when accepted" do
       it "should create friends association" do
-
-
         user.friend_request(friend)
         friend.accept_request(user)
         expect(user.friends).to include friend
