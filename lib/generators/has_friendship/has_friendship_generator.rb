@@ -9,7 +9,10 @@ class HasFriendshipGenerator < Rails::Generators::Base
   end
 
   def self.next_migration_number(path)
-    Time.now.utc.strftime("%Y%m%d%H%M%S")
+    next_num = Time.now.utc.strftime("%Y%m%d%H%M%S").to_i
+    current_num = current_migration_number(path)
+    next_num += (current_num - next_num + 1) if current_num >= next_num
+    next_num.to_s
   end
 
   def create_migration_file
