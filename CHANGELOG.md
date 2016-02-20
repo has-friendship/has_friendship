@@ -1,3 +1,7 @@
+## 0.1.1 (2016/2/20)
+
+* Fix overlapping migration timestamp [#17](https://github.com/sungwoncho/has_friendship/pull/17)
+
 ## 0.1.0 (2015/12/5)
 
 * Rails 4.x support (#11)
