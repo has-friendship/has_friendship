@@ -1,11 +1,17 @@
 module HasFriendship
   class Friendship < ActiveRecord::Base
-    def self.relation_attributes(one, other)
-      {
+    def self.relation_attributes(one, other, status: nil)
+      attr = {
         friendable_id: one.id,
         friendable_type: one.class.base_class.name,
         friend_id: other.id
       }
+
+      if status
+        attr[:status] = status
+      end
+
+      attr
     end
 
     def self.create_relation(one, other, options)
@@ -14,8 +20,8 @@ module HasFriendship
       relation.save
     end
 
-    def self.find_relation(friendable, friend)
-      where relation_attributes(friendable, friend)
+    def self.find_relation(friendable, friend, status: nil)
+      where relation_attributes(friendable, friend, status: status)
     end
 
     def self.exist?(friendable, friend)

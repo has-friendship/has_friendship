@@ -249,6 +249,20 @@ describe User, focus: true do
           expect(jon.friends_with?(user)).to eq false
         end
       end
+
+      context 'when a pending friendship exists' do
+        it 'returns false' do
+          create_friendship(user, friend, status: 'pending')
+          expect(user.friends_with?(friend)).to eq false
+        end
+      end
+
+      context 'when a blocked friendship exists' do
+        it 'returns false' do
+          create_friendship(user, friend, status: 'blocked')
+          expect(user.friends_with?(friend)).to eq false
+        end
+      end
     end
   end
 end

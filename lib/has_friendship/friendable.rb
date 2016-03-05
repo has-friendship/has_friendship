@@ -85,7 +85,7 @@ module HasFriendship
       end
 
       def friends_with?(friend)
-        HasFriendship::Friendship.find_relation(self, friend).any?
+        HasFriendship::Friendship.find_relation(self, friend, status: 'accepted').any?
       end
 
       private
