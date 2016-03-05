@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    has_friendship (0.1.1)
+    has_friendship (0.1.2)
       rails (~> 4.0)
 
 GEM
@@ -223,4 +223,4 @@ DEPENDENCIES
   tzinfo-data
 
 BUNDLED WITH
-   1.10.6
+   1.11.2
