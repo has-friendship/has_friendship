@@ -1,3 +1,7 @@
+## 0.1.3 (2016/4/5)
+
+* Fix `blocked_friends` ([#23](https://github.com/sungwoncho/has_friendship/pull/23))
+
 ## 0.1.2 (2016/3/6)
 
 * Fix friends_with to return true only when an 'accepted' friendship exists ([f73d1e](https://github.com/sungwoncho/has_friendship/commit/f73d1ef2149c06135f99e0ec18457c5aa9dd85a1))
