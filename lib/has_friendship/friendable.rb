@@ -12,7 +12,8 @@ module HasFriendship
 
         has_many :blocked_friends,
                   -> { where friendships: { status: 'blocked' } },
-                  through: :friendships
+                  through: :friendships,
+                  source: :friend
 
         has_many :friends,
                   -> { where friendships: { status: 'accepted' } },

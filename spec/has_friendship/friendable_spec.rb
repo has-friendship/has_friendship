@@ -11,6 +11,7 @@ describe User, focus: true do
     it { should have_many(:friends).through(:friendships) }
     it { should have_many(:requested_friends).through(:friendships) }
     it { should have_many(:pending_friends).through(:friendships) }
+    it { should have_many(:blocked_friends).through(:friendships) }
   end
 
   describe "instance methods" do
