@@ -51,8 +51,7 @@ module HasFriendship
 
       def accept_request(friend)
         on_relation_with(friend) do |one, other|
-          HasFriendship::Friendship.find_unblocked_friendship(one, other)
-                                   .update(status: 2)
+          HasFriendship::Friendship.find_unblocked_friendship(one, other).accept!
         end
       end
 
@@ -66,8 +65,7 @@ module HasFriendship
 
       def block_friend(friend)
         on_relation_with(friend) do |one, other|
-          HasFriendship::Friendship.find_unblocked_friendship(one, other)
-                                   .update(status: 3, blocker_id: self.id)
+          HasFriendship::Friendship.find_unblocked_friendship(one, other).block!
         end
       end
 

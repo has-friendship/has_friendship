@@ -7,6 +7,7 @@ require 'rspec/rails'
 
 require 'shoulda'
 require 'support/friendship_macro'
+require 'stateful_enum'
 
 load 'internal/db/schema.rb'
 
