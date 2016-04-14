@@ -29,11 +29,11 @@ module HasFriendship
     end
 
     def self.find_unblocked_friendship(friendable, friend)
-      find_relation(friendable, friend).where.not(status: "blocked").first
+      find_relation(friendable, friend).where.not(status: 3).first
     end
 
     def self.find_blocked_friendship(friendable, friend)
-      find_relation(friendable, friend).where(status: "blocked").first
+      find_relation(friendable, friend).where(status: 3).first
     end
 
     def self.find_one_side(one, other)

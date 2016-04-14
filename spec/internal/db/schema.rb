@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 20141202075742) do
     t.integer  "friendable_id"
     t.string   "friendable_type"
     t.integer  "friend_id"
-    t.string   "status"
+    t.integer  "status", index: true
     t.integer  "blocker_id"
     t.datetime "created_at"
     t.datetime "updated_at"
