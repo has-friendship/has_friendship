@@ -143,6 +143,6 @@ Instances with accepted Friendship.
 Thanks for all the contributors. Pull requests are encouraged for the following
 features.
 
-* Make a separate table/model for friendship blocking records, with `blocker_id`
+- [ ] Make a separate table/model for friendship blocking records, with `blocker_id`
 and `blockee_id`. Currently, `Friendship` model is kind of bloated.
-* Implement state machine for friendship status.
+- [x] Implement state machine for friendship status. ([#24](https://github.com/sungwoncho/has_friendship/pull/24))
