@@ -1,3 +1,7 @@
+## 0.1.4 (2016/4/17)
+
+* Implement state machine for friendship status ([#24](https://github.com/sungwoncho/has_friendship/pull/24))
+
 ## 0.1.3 (2016/4/5)
 
 * Fix `blocked_friends` ([#23](https://github.com/sungwoncho/has_friendship/pull/23))
