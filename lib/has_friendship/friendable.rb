@@ -11,21 +11,21 @@ module HasFriendship
                  class_name: "HasFriendship::Friendship", dependent: :destroy
 
         has_many :blocked_friends,
-                  -> { where friendships: { status: 'blocked' } },
+                  -> { where friendships: { status: 3 } },
                   through: :friendships,
                   source: :friend
 
         has_many :friends,
-                  -> { where friendships: { status: 'accepted' } },
+                  -> { where friendships: { status: 2 } },
                   through: :friendships
 
         has_many :requested_friends,
-                  -> { where friendships: { status: 'requested' } },
+                  -> { where friendships: { status: 1 } },
                   through: :friendships,
                   source: :friend
 
         has_many :pending_friends,
-                  -> { where friendships: { status: 'pending' } },
+                  -> { where friendships: { status: 0 } },
                   through: :friendships,
                   source: :friend
 
@@ -43,16 +43,15 @@ module HasFriendship
       def friend_request(friend)
         unless self == friend || HasFriendship::Friendship.exist?(self, friend)
           transaction do
-            HasFriendship::Friendship.create_relation(self, friend, status: 'pending')
-            HasFriendship::Friendship.create_relation(friend, self, status: 'requested')
+            HasFriendship::Friendship.create_relation(self, friend, status: 0)
+            HasFriendship::Friendship.create_relation(friend, self, status: 1)
           end
         end
       end
 
       def accept_request(friend)
         on_relation_with(friend) do |one, other|
-          HasFriendship::Friendship.find_unblocked_friendship(one, other)
-                                   .update(status: 'accepted')
+          HasFriendship::Friendship.find_unblocked_friendship(one, other).accept!
         end
       end
 
@@ -66,8 +65,7 @@ module HasFriendship
 
       def block_friend(friend)
         on_relation_with(friend) do |one, other|
-          HasFriendship::Friendship.find_unblocked_friendship(one, other)
-                                   .update(status: 'blocked', blocker_id: self.id)
+          HasFriendship::Friendship.find_unblocked_friendship(one, other).block!
         end
       end
 
@@ -86,7 +84,7 @@ module HasFriendship
       end
 
       def friends_with?(friend)
-        HasFriendship::Friendship.find_relation(self, friend, status: 'accepted').any?
+        HasFriendship::Friendship.find_relation(self, friend, status: 2).any?
       end
 
       private

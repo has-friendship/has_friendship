@@ -1,5 +1,20 @@
 module HasFriendship
   class Friendship < ActiveRecord::Base
+
+    enum status: { pending: 0, requested: 1, accepted: 2, blocked: 3 } do
+      event :accept do
+        transition [:pending, :requested] => :accepted
+      end
+
+      event :block do
+        before do
+          self.blocker_id = self.friendable.id
+        end
+
+        transition all - [:blocked] => :blocked
+      end
+    end
+
     def self.relation_attributes(one, other, status: nil)
       attr = {
         friendable_id: one.id,
@@ -29,11 +44,11 @@ module HasFriendship
     end
 
     def self.find_unblocked_friendship(friendable, friend)
-      find_relation(friendable, friend).where.not(status: "blocked").first
+      find_relation(friendable, friend).where.not(status: 3).first
     end
 
     def self.find_blocked_friendship(friendable, friend)
-      find_relation(friendable, friend).where(status: "blocked").first
+      find_relation(friendable, friend).where(status: 3).first
     end
 
     def self.find_one_side(one, other)

@@ -3,7 +3,7 @@ class CreateFriendships < ActiveRecord::Migration
     create_table :friendships do |t|
       t.references :friendable, polymorphic: true
       t.integer  :friend_id
-      t.string   :status
+      t.integer  :status, index: true
 
       t.timestamps
     end
