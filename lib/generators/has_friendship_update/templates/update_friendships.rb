@@ -1,4 +1,4 @@
-class CreateFriendships < ActiveRecord::Migration
+class UpdateFriendships < ActiveRecord::Migration
   def self.up
     HasFriendship::Friendship.where(status: 'pending').update_all(status: 0)
     HasFriendship::Friendship.where(status: 'requested').update_all(status: 1)
