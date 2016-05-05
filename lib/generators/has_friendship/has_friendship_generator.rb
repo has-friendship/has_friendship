@@ -20,5 +20,7 @@ class HasFriendshipGenerator < Rails::Generators::Base
                        'db/migrate/create_friendships.rb'
     migration_template 'add_blocker_id_to_friendships.rb',
                        'db/migrate/add_blocker_id_to_friendships.rb'
+    migration_template '../../has_friendship_update/templates/update_friendships.rb',
+                       'db/migrate/update_friendships.rb'
   end
 end
