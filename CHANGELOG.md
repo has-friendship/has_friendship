@@ -1,6 +1,10 @@
+## 1.0.0 (2016/5/7)
+
+* Add a new migration for implementing state machine ([#27](https://github.com/sungwoncho/has_friendship/pull/27)) [@ArmandoMendoza](https://github.com/ArmandoMendoza)
+
 ## 0.1.4 (2016/4/17)
 
-* Implement state machine for friendship status ([#24](https://github.com/sungwoncho/has_friendship/pull/24))
+* Implement state machine for friendship status ([#24](https://github.com/sungwoncho/has_friendship/pull/24)) [@ArmandoMendoza](https://github.com/ArmandoMendoza)
 
 ## 0.1.3 (2016/4/5)
 
