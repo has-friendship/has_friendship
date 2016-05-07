@@ -32,6 +32,7 @@ describe HasFriendshipGenerator, type: :generator do
         directory "migrate" do
           migration "create_friendships"
           migration "add_blocker_id_to_friendships"
+          migration "update_friendships"
         end
       end
     }
