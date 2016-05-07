@@ -26,9 +26,9 @@ The generator will copy a migration that creates `friendships` table. Run the mi
 column in the `friendships` table, and a migration should be run. You will need
 to run the generator and run the new migration.
 
-### Upgrading from 0.1.3 to 0.1.4
+### Upgrading to 1.x.x
 
-If upgrading from <= 0.1.3 to 0.1.4, please run the following generator:
+If upgrading from <= 0.1.3 to 1.x.x, please run the following generator:
 
     $ rails generate has_friendship_update
 
