@@ -9,4 +9,7 @@ class CreateFriendships < ActiveRecord::Migration
     end
   end
 
+  def self.down
+    drop_table :friendships
+  end
 end
