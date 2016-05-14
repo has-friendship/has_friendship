@@ -1,4 +1,4 @@
-# HasFriendship [![Build Status](https://travis-ci.org/sungwoncho/has_friendship.svg?branch=master)](https://travis-ci.org/sungwoncho/has_friendship) [![Coverage Status](https://coveralls.io/repos/sungwoncho/has_friendship/badge.png?branch=master)](https://coveralls.io/r/sungwoncho/has_friendship?branch=master) [![Vym](https://img.shields.io/badge/Reviewing%20with-Vym-blue.svg)](https://vym.io)
+# HasFriendship [![Build Status](https://travis-ci.org/sungwoncho/has_friendship.svg?branch=master)](https://travis-ci.org/sungwoncho/has_friendship) [![Coverage Status](https://coveralls.io/repos/sungwoncho/has_friendship/badge.png?branch=master)](https://coveralls.io/r/sungwoncho/has_friendship?branch=master)
 
 Add friendship features to your ActiveRecord models.
 
