@@ -1,3 +1,8 @@
+## 1.0.1 (2016/5/14)
+
+* Fix missing methods issue ([#28](https://github.com/sungwoncho/has_friendship/pull/28)) [@f-anthonioz](https://github.com/f-anthonioz)
+* Add down method to a migration ([#30](https://github.com/sungwoncho/has_friendship/pull/30)) [@f-anthonioz](https://github.com/f-anthonioz)
+
 ## 1.0.0 (2016/5/7)
 
 * Add a new migration for implementing state machine ([#27](https://github.com/sungwoncho/has_friendship/pull/27)) [@ArmandoMendoza](https://github.com/ArmandoMendoza)
