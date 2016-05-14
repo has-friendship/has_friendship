@@ -1,3 +1,5 @@
+require 'stateful_enum'
+
 require 'active_support'
 require 'active_record'
 
