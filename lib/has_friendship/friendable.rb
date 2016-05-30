@@ -34,6 +34,10 @@ module HasFriendship
         end
       end
 
+      instance_eval do
+        scope :friend_with, lambda { |user_id| joins('INNER JOIN friendships f2 on friendships.friend_id = f2.friend_id').where('f2.friendable_id=? and f2.status = ?', user_id, 2) }
+      end
+
       include HasFriendship::Friendable::InstanceMethods
       include HasFriendship::Extender
     end

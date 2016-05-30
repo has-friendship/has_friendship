@@ -14,6 +14,21 @@ describe User, focus: true do
     it { should have_many(:blocked_friends).through(:friendships) }
   end
 
+  describe "#has_friendship" do
+    let(:common_friend) {User.create(name: 'Nick')}
+    describe '#friend_with' do
+      it "should be provided" do
+        expect(User).to respond_to(:friend_with)
+      end
+
+      it "should give the mutual friends between two users" do
+        create_friendship(user, common_friend)
+        create_friendship(friend, common_friend)
+        expect(user.friends.friend_with(friend.id)).to eq([common_friend])
+      end
+    end
+  end
+
   describe "instance methods" do
 
     describe "#friend_request" do
