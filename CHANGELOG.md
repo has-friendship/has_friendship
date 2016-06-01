@@ -1,6 +1,6 @@
 ## 1.0.2 (2016/5/31)
 
-* Accept Rails 5.0.x as a dependency
+* Accept Rails 5.0.x as a dependency [@adambutler](https://github.com/adambutler)
 
 ## 1.0.1 (2016/5/14)
 
