@@ -1,3 +1,7 @@
+## 1.0.2 (2016/5/31)
+
+* Accept Rails 5.0.x as a dependency
+
 ## 1.0.1 (2016/5/14)
 
 * Fix missing methods issue ([#28](https://github.com/sungwoncho/has_friendship/pull/28)) [@f-anthonioz](https://github.com/f-anthonioz)

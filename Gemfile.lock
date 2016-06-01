@@ -1,8 +1,8 @@
 PATH
   remote: .
   specs:
-    has_friendship (1.0.1)
-      rails (~> 4.0)
+    has_friendship (1.0.2)
+      rails (>= 4.0.0, < 5.1.0)
       stateful_enum
 
 GEM
@@ -47,7 +47,7 @@ GEM
     builder (3.2.2)
     byebug (8.2.1)
     coderay (1.1.0)
-    concurrent-ruby (1.0.1)
+    concurrent-ruby (1.0.2)
     coveralls (0.8.10)
       json (~> 1.8)
       rest-client (>= 1.6.8, < 2)
