@@ -103,7 +103,8 @@ There are four types of friends:
 * blocked_friends
 * friends
 
-They can be accessed using association.
+Each type returns an array of friends, which should be looped through to
+access specific friends. They can be accessed using association.
 
 #### requested_friends
 
