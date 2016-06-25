@@ -51,7 +51,8 @@ module HasFriendship
 
       def accept_request(friend)
         on_relation_with(friend) do |one, other|
-          HasFriendship::Friendship.find_unblocked_friendship(one, other).accept!
+          friendship = HasFriendship::Friendship.find_unblocked_friendship(one, other)
+          friendship.accept! if can_accept_request?(friendship)
         end
       end
 
@@ -91,6 +92,13 @@ module HasFriendship
 
       def has_blocked(friend)
         HasFriendship::Friendship.find_one_side(self, friend).blocker_id == self.id
+      end
+
+      def can_accept_request?(friendship)
+        return if friendship.pending? && self == friendship.friendable
+        return if friendship.requested? && self == friendship.friend
+
+        true
       end
     end
   end
