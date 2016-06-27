@@ -136,6 +136,13 @@ describe User, focus: true do
 
           expect(friendship.status).to eq 'accepted'
         end
+
+        it "requester should not be able to accept their own friend request" do
+          create_request(user, friend)
+          expect {
+            user.accept_request(friend)
+          }.to change(user.friends, :count).by(0)
+        end
       end
     end
 
