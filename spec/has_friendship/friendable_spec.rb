@@ -214,6 +214,7 @@ describe User, focus: true do
           create_friendship(user, friend)
           user.block_friend(friend)
           expect(find_friendship_record(user, friend).blocker_id).to eq user.id
+          expect(find_friendship_record(friend, user).blocker_id).to eq user.id
         end
       end
     end

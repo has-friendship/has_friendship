@@ -7,10 +7,6 @@ module HasFriendship
       end
 
       event :block do
-        before do
-          self.blocker_id = self.friendable.id
-        end
-
         transition all - [:blocked] => :blocked
       end
     end
