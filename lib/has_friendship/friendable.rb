@@ -88,6 +88,10 @@ module HasFriendship
         HasFriendship::Friendship.find_relation(self, friend, status: 2).any?
       end
 
+      def on_friendship_created(*args); end
+      def on_friendship_accepted(*args); end
+      def on_friendship_blocked(*args); end
+
       private
 
       def has_blocked(friend)

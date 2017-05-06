@@ -272,5 +272,30 @@ describe User, focus: true do
         end
       end
     end
+
+    describe '#on_friendship_accepted' do
+      context 'when friendship is accepted' do
+        it 'should be called' do
+          user.friend_request(friend)
+          friendship = find_friendship_record(user, friend)
+
+          expect(friendship.friendable).to receive(:on_friendship_accepted)
+          friendship.accept!
+        end
+      end
+    end
+
+    describe '#on_friendship_blocked' do
+      context 'when friendship is blocked' do
+        it 'should be called' do
+          user.friend_request(friend)
+          friendship = find_friendship_record(user, friend)
+
+          expect(friendship.friendable).to receive(:on_friendship_blocked)
+          friendship.block!
+        end
+      end
+    end
+
   end
 end
