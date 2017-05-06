@@ -1,9 +1,17 @@
 module HasFriendship
   class Friendship < ActiveRecord::Base
 
+    after_create do
+      friend.on_friendship_created(self)
+    end
+
     enum status: { pending: 0, requested: 1, accepted: 2, blocked: 3 } do
       event :accept do
         transition [:pending, :requested] => :accepted
+
+        after do
+          friendable.on_friendship_accepted(self)
+        end
       end
 
       event :block do
@@ -11,6 +19,9 @@ module HasFriendship
           self.blocker_id = self.friendable.id
         end
 
+        after do
+          friendable.on_friendship_blocked(self)
+        end
         transition all - [:blocked] => :blocked
       end
     end

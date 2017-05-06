@@ -149,6 +149,24 @@ Instances with accepted Friendship.
 @dee.friends # => [@mac]
 ```
 
+### Callbacks
+
+To use callbacks you can add methods described below, to your Friendable model.
+
+```ruby
+def on_friendship_created(friendship)
+  ...
+end
+
+def on_friendship_accepted(friendship)
+  ...
+end
+
+def on_friendship_blocked(friendship)
+  ...
+end
+```
+
 ## Roadmap
 
 Thanks for all the contributors. Pull requests are encouraged for the following
