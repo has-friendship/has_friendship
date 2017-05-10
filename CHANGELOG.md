@@ -1,3 +1,7 @@
+## 1.1.0 (2017/5/6)
+
+* Implement callbacks for friendship state change ([#41](https://github.com/sungwoncho/has_friendship/pull/41)) [@sbadura](https://github.com/sbadura)
+
 ## 1.0.2 (2016/5/31)
 
 * Accept Rails 5.0.x as a dependency [@adambutler](https://github.com/adambutler)
