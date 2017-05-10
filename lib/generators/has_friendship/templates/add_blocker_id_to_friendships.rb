@@ -1,4 +1,4 @@
-class AddBlockerIdToFriendships < ActiveRecord::Migration
+class AddBlockerIdToFriendships < ActiveRecord::Migration<%= migration_version %>
   def self.up
     add_column :friendships, :blocker_id, :integer, default: nil
   end

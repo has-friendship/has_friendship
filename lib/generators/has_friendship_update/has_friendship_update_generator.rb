@@ -17,6 +17,16 @@ class HasFriendshipUpdateGenerator < Rails::Generators::Base
 
   def create_migration_file
     migration_template 'update_friendships.rb',
-                       'db/migrate/update_friendships.rb'
+                       'db/migrate/update_friendships.rb', migration_version: migration_version
+  end
+
+  def rails5?
+    Rails.version.start_with? '5'
+  end
+
+  def migration_version
+    if rails5?
+      "[#{Rails::VERSION::MAJOR}.#{Rails::VERSION::MINOR}]"
+    end
   end
 end

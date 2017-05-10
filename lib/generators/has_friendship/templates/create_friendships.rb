@@ -1,4 +1,4 @@
-class CreateFriendships < ActiveRecord::Migration
+class CreateFriendships < ActiveRecord::Migration<%= migration_version %>
   def self.up
     create_table :friendships do |t|
       t.references :friendable, polymorphic: true

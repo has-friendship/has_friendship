@@ -17,10 +17,21 @@ class HasFriendshipGenerator < Rails::Generators::Base
 
   def create_migration_file
     migration_template 'create_friendships.rb',
-                       'db/migrate/create_friendships.rb'
+                       'db/migrate/create_friendships.rb', migration_version: migration_version
     migration_template 'add_blocker_id_to_friendships.rb',
-                       'db/migrate/add_blocker_id_to_friendships.rb'
+                       'db/migrate/add_blocker_id_to_friendships.rb', migration_version: migration_version
     migration_template '../../has_friendship_update/templates/update_friendships.rb',
-                       'db/migrate/update_friendships.rb'
+                       'db/migrate/update_friendships.rb', migration_version: migration_version
   end
+
+  def rails5?
+    Rails.version.start_with? '5'
+  end
+
+  def migration_version
+    if rails5?
+      "[#{Rails::VERSION::MAJOR}.#{Rails::VERSION::MINOR}]"
+    end
+  end
+
 end
