@@ -2,7 +2,11 @@ module HasFriendship
   class Friendship < ActiveRecord::Base
 
     after_create do
-      friend.on_friendship_created(self) if friend.respond_to?("on_friendship_created")
+      friend.on_friendship_created(self) if friend.respond_to?('on_friendship_created')
+    end
+
+    after_destroy do
+      friend.on_friendship_destroyed(self) if friend.respond_to?('on_friendship_destroyed')
     end
 
     enum status: { pending: 0, requested: 1, accepted: 2, blocked: 3 } do
