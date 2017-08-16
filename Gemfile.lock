@@ -1,8 +1,8 @@
 PATH
   remote: .
   specs:
-    has_friendship (1.1.0)
-      rails (>= 4.0.0, < 5.1.0)
+    has_friendship (1.1.1)
+      rails (>= 4.0.0, < 5.2.0)
       stateful_enum
 
 GEM
@@ -92,7 +92,7 @@ GEM
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
     lumberjack (1.0.9)
-    mail (2.6.5)
+    mail (2.6.6)
       mime-types (>= 1.16, < 4)
     method_source (0.8.2)
     mime-types (2.99)
@@ -225,4 +225,4 @@ DEPENDENCIES
   tzinfo-data
 
 BUNDLED WITH
-   1.12.5
+   1.15.1
