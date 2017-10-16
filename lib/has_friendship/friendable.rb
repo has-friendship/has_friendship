@@ -87,6 +87,11 @@ module HasFriendship
       def friends_with?(friend)
         HasFriendship::Friendship.find_relation(self, friend, status: 2).any?
       end
+      
+      def friendship_status(friend)
+        friendship = HasFriendship::Friendship.find_relation(self, friend)
+        friendship.first.status if friendship.any?
+      end
 
       def on_friendship_created(*args); end
       def on_friendship_accepted(*args); end
