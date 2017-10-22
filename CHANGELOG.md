@@ -1,3 +1,7 @@
+## 1.1.1 (2017/5/6)
+
+* Allow Rails 5.1.x ([#47](https://github.com/sungwoncho/has_friendship/pull/47)) [@mswiszcz](https://github.com/mswiszcz)
+
 ## 1.1.0 (2017/5/6)
 
 * Implement callbacks for friendship state change ([#41](https://github.com/sungwoncho/has_friendship/pull/41)) [@sbadura](https://github.com/sbadura)
