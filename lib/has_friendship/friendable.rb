@@ -1,6 +1,5 @@
 module HasFriendship
   module Friendable
-
     def friendable?
       false
     end
@@ -39,6 +38,17 @@ module HasFriendship
     end
 
     module InstanceMethods
+      CALLBACK_METHOD_NAMES = %i(
+        on_friendship_created
+        on_friendship_accepted
+        on_friendship_blocked
+      ).freeze
+
+      CALLBACK_METHOD_NAMES.each do |method_name|
+        define_method(method_name) do |*args|
+          super(*args) if defined?(super)
+        end
+      end
 
       def friend_request(friend)
         unless self == friend || HasFriendship::Friendship.exist?(self, friend)
@@ -87,10 +97,6 @@ module HasFriendship
       def friends_with?(friend)
         HasFriendship::Friendship.find_relation(self, friend, status: 2).any?
       end
-
-      def on_friendship_created(*args); end
-      def on_friendship_accepted(*args); end
-      def on_friendship_blocked(*args); end
 
       private
 
