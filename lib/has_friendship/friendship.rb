@@ -1,8 +1,12 @@
 module HasFriendship
   class Friendship < ActiveRecord::Base
 
-    after_create do
-      friend.on_friendship_created(self)
+    after_create do |record|
+      friend.on_friendship_created(record)
+    end
+
+    after_destroy do |record|
+      friend.on_friendship_destroyed(record)
     end
 
     enum status: { pending: 0, requested: 1, accepted: 2, blocked: 3 } do

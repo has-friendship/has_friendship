@@ -42,6 +42,7 @@ module HasFriendship
         on_friendship_created
         on_friendship_accepted
         on_friendship_blocked
+        on_friendship_destroyed
       ).freeze
 
       CALLBACK_METHOD_NAMES.each do |method_name|
