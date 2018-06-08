@@ -6,7 +6,7 @@ module HasFriendship
     end
 
     after_destroy do |record|
-      friend.on_friendship_destroyed(record)
+      friend.try(:on_friendship_destroyed, record)
     end
 
     enum status: { pending: 0, requested: 1, accepted: 2, blocked: 3 } do
