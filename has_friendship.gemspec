@@ -14,6 +14,7 @@ Gem::Specification.new do |s|
   s.license     = "MIT"
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
+  s.required_ruby_version = '>= 2.4.1'
 
   s.add_dependency "rails", ['>= 4.0.0', '< 5.3.0']
   s.add_dependency "stateful_enum"
