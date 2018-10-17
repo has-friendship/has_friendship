@@ -1,4 +1,4 @@
-class UpdateFriendships < ActiveRecord::Migration
+class UpdateFriendships < ActiveRecord::Migration[4.2]
   def self.up
     add_column :friendships, :status_temp, :integer, index: true
     HasFriendship::Friendship.where(status: 'pending').update_all(status_temp: 0)
