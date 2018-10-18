@@ -91,6 +91,7 @@ module HasFriendship
       def on_friendship_created(*args); end
       def on_friendship_accepted(*args); end
       def on_friendship_blocked(*args); end
+      def on_friendship_destroyed(*args); end
 
       private
 
