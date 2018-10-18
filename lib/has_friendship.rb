@@ -2,6 +2,8 @@ require 'stateful_enum'
 
 require 'active_support'
 require 'active_record'
+require 'rails/engine'
+require 'has_friendship/engine'
 
 module HasFriendship
   extend ActiveSupport::Autoload
