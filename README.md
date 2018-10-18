@@ -12,12 +12,9 @@ Add *HasFriendship* to your Gemfile:
 gem 'has_friendship'
 ```
 
-After you bundle *HasFriendship*, you need to copy migrations:
+After you bundle *HasFriendship*, you need to copy migrations and migrate:
 
     $ rails has_friendship:install:migrations
-
-The generator will copy migrations to your rails app.
-
     $ rake db:migrate
 
 ## Gem upgrades
