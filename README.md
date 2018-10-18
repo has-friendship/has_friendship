@@ -165,6 +165,10 @@ end
 def on_friendship_blocked(friendship)
   ...
 end
+
+def on_friendship_destroyed(friendship)
+  ...
+en
 ```
 
 ## Roadmap
