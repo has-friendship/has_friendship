@@ -12,29 +12,21 @@ Add *HasFriendship* to your Gemfile:
 gem 'has_friendship'
 ```
 
-After you install *HasFriendship*, you need to run the generator:
+After you bundle *HasFriendship*, you need to copy migrations:
 
-    $ rails generate has_friendship
+    $ rails has_friendship:install:migrations
 
-The generator will copy a migration that creates `friendships` table. Run the migration to finish the setup.
-
-    $ rake db:migrate
-
-### Upgrading to 0.1.0
-
-`0.1.0` adds a blocking feature for friendables. This requires an additional
-column in the `friendships` table, and a migration should be run. You will need
-to run the generator and run the new migration.
-
-### Upgrading to 1.x.x
-
-If upgrading from <= 0.1.3 to 1.x.x, please run the following generator:
-
-    $ rails generate has_friendship_update
-
-Then, run the migration:
+The generator will copy migrations to your rails app.
 
     $ rake db:migrate
+
+## Gem upgrades
+
+After gem updates, it may be necessary to run subsequent migrations.
+
+    $ rails has_friendship:install:migrations
+
+Will install _new_ migrations if they're necessary.
 
 ## Usage
 
