@@ -1,3 +1,7 @@
+## 1.1.3 (2018/11/3)
+
+* Add rails engine so that migrations will automatically be pulled in by rails ([#60](https://github.com/sungwoncho/has_friendship/pull/60)) [@chevinbrown](https://github.com/chevinbrown)
+
 ## 1.1.2 (2018/11/3)
 
 * Allow Rails 5.2 ([#57](https://github.com/sungwoncho/has_friendship/pull/57)) [@jmajonis](https://github.com/jmajonis)
