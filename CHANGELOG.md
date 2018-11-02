@@ -1,3 +1,7 @@
+## 1.1.2 (2018/11/3)
+
+* Allow Rails 5.2 ([#57](https://github.com/sungwoncho/has_friendship/pull/57)) [@jmajonis](https://github.com/jmajonis)
+
 ## 1.1.1 (2017/5/6)
 
 * Allow Rails 5.1.x ([#47](https://github.com/sungwoncho/has_friendship/pull/47)) [@mswiszcz](https://github.com/mswiszcz)
