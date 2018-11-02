@@ -1,4 +1,10 @@
-class UpdateFriendships < ActiveRecord::Migration[4.2]
+if ActiveRecord.gem_version >= Gem::Version.new('5.0')
+  class UpdateFriendships < ActiveRecord::Migration[4.2]; end
+else
+  class UpdateFriendships < ActiveRecord::Migration; end
+end
+
+UpdateFriendships.class_eval do
   def self.up
     add_column :friendships, :status_temp, :integer, index: true
     HasFriendship::Friendship.where(status: 'pending').update_all(status_temp: 0)
