@@ -8,7 +8,7 @@ AddUniqueIndexToFriendships.class_eval do
   disable_ddl_transaction!
 
   def self.up
-    add_index :friendships, [:friendable_id, :friend_id], unique: true, algorithm: :concurrently
+    add_index :friendships, [:friendable_id, :friend_id], unique: true, algorithm: :concurrently unless index_exists? (:friendable_id, :friend_id)
   end
 
   def self.down
