@@ -13,6 +13,7 @@ CreateFriendships.class_eval do
 
       t.timestamps
     end
+     add_index :friendable_id, :friend_id, unique: true
   end
 
   def self.down
