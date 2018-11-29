@@ -1,3 +1,7 @@
+## 1.1.4 (2018/11/29)
+
+* Adds unique index between friendable_id and friend_id to prevent duplicate friendships. ([#64](https://github.com/sungwoncho/has_friendship/pull/64)) [@xilefff](https://github.com/xilefff)
+
 ## 1.1.3 (2018/11/3)
 
 * Add rails engine so that migrations will automatically be pulled in by rails ([#60](https://github.com/sungwoncho/has_friendship/pull/60)) [@chevinbrown](https://github.com/chevinbrown)
