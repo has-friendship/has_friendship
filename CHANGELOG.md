@@ -1,4 +1,9 @@
-## 1.1.4 (2018/11/29)
+## 1.1.5 (2018/12/01)
+* Corrects unique index between friendable_id and friend_id
+
+There was a typo in the migration of version 1.1.4 and the migration was not tested or reviewed.
+
+## 1.1.4 (2018/11/29)(yanked)
 
 * Adds unique index between friendable_id and friend_id to prevent duplicate friendships. ([#64](https://github.com/sungwoncho/has_friendship/pull/64)) [@xilefff](https://github.com/xilefff)
 
