@@ -14,6 +14,8 @@ AddUniqueIndexToFriendships.class_eval do
   end
 
   def self.down
+    return unless index_exists?(:friendships, [:friendable_id, :friend_id])
+
     remove_index :friendships, [:friendable_id, :friend_id]
   end
 end
