@@ -1,8 +1,13 @@
 module HasFriendship
   class Friendship < ActiveRecord::Base
+    validate :satisfy_custom_conditions
 
-    after_create do
-      friend.on_friendship_created(self)
+    after_create do |record|
+      friend.on_friendship_created(record)
+    end
+
+    after_destroy do |record|
+      friend.try(:on_friendship_destroyed, record)
     end
 
     enum status: { pending: 0, requested: 1, accepted: 2, blocked: 3 } do
@@ -64,6 +69,16 @@ module HasFriendship
 
     def self.find_one_side(one, other)
       find_by(relation_attributes(one, other))
+    end
+
+    private
+
+    def satisfy_custom_conditions
+      return unless friend.respond_to?(:friendship_errors)
+
+      friend.friendship_errors(friendable).to_a.each do |friendship_error|
+        errors.add(:base, friendship_error)
+      end
     end
   end
 end

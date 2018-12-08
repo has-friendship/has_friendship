@@ -138,9 +138,26 @@ Instances with accepted Friendship.
 @dee.friends # => [@mac]
 ```
 
+### Custom validations
+
+You can provide custom validations for the friendship
+by implementing `friendship_errors` method on your Friendable model.
+
+Returning an array with any elements will result in the friendship not being established.
+
+```ruby
+def friendship_errors(wannabe_friend)
+  return if can_become_friends_with?(wannabe_friend)
+
+  [
+    "Cannot become friends with #{wannabe_friend.email}",
+  ]
+end
+```
+
 ### Callbacks
 
-To use callbacks you can add methods described below, to your Friendable model.
+To use callbacks you can add methods described below to your Friendable model.
 
 ```ruby
 def on_friendship_created(friendship)
@@ -152,6 +169,10 @@ def on_friendship_accepted(friendship)
 end
 
 def on_friendship_blocked(friendship)
+  ...
+end
+
+def on_friendship_destroyed(friendship)
   ...
 end
 ```
