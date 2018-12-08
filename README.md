@@ -14,14 +14,14 @@ gem 'has_friendship'
 
 After you bundle *HasFriendship*, you need to copy migrations and migrate:
 
-    $ rails has_friendship:install:migrations
+    $ rails has_friendship_engine:install:migrations
     $ rake db:migrate
 
 ## Gem upgrades
 
 After gem updates, it may be necessary to run subsequent migrations.
 
-    $ rails has_friendship:install:migrations
+    $ rails has_friendship_engine:install:migrations
 
 Will install _new_ migrations if they're necessary.
 
