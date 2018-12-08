@@ -1,3 +1,8 @@
+## 1.1.6 (2018/12/08)
+* Add create destroy after hook specs ([#66](https://github.com/sungwoncho/has_friendship/pull/66)) [@chevinbrown](https://github.com/chevinbrown)
+* Fix migration copying command in README.md ([#65](https://github.com/sungwoncho/has_friendship/pull/65)) [@KubaSemczuk](https://github.com/KubaSemczuk)
+* Stop overriding callback methods if they're present ([#56](https://github.com/sungwoncho/has_friendship/pull/56)) [@skycocker](https://github.com/skycocker)
+
 ## 1.1.5 (2018/12/01)
 * Corrects unique index between friendable_id and friend_id
 
