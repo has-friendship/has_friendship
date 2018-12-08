@@ -1,9 +1,8 @@
 require 'rails_helper'
 
-describe User, focus: true do
-
-  let(:user){ User.create(name: 'Jessie') }
-  let(:friend){ User.create(name: 'Heisenberg') }
+describe User do
+  let(:user) { User.create(name: 'Jessie') }
+  let(:friend) { User.create(name: 'Heisenberg') }
 
   describe "association" do
     # TODO: find a way to test condition
@@ -297,5 +296,26 @@ describe User, focus: true do
       end
     end
 
+    describe '#on_friendship_destroyed' do
+      context 'when friendship is destroyed' do
+        it 'should be called' do
+          user.friend_request(friend)
+          friendship = find_friendship_record(user, friend)
+          expect(friendship.friendable).to receive(:on_friendship_destroyed)
+          friendship.destroy
+        end
+      end
+    end
+
+    describe '#on_friendship_created' do
+      context 'when friendship is created' do
+        it 'should be called' do
+          user.friend_request(friend) do
+            friendship = find_friendship_record(user, friend)
+            expect(friendship.try(:friendable)).to receive(:on_friendship_created)
+          end
+        end
+      end
+    end
   end
 end
