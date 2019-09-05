@@ -2,7 +2,7 @@ PATH
   remote: .
   specs:
     has_friendship (1.1.6)
-      rails (>= 4.2.0, < 5.3.0)
+      rails (>= 4.2.0, <= 6.0.0)
       stateful_enum
 
 GEM
@@ -70,7 +70,7 @@ GEM
     generator_spec (0.9.4)
       activesupport (>= 3.0.0)
       railties (>= 3.0.0)
-    globalid (0.4.1)
+    globalid (0.4.2)
       activesupport (>= 4.2.0)
     guard (2.14.2)
       formatador (>= 0.2.4)
@@ -102,12 +102,12 @@ GEM
     marcel (0.3.3)
       mimemagic (~> 0.3.2)
     method_source (0.9.0)
-    mimemagic (0.3.2)
-    mini_mime (1.0.1)
+    mimemagic (0.3.3)
+    mini_mime (1.0.2)
     mini_portile2 (2.3.0)
     minitest (5.11.3)
     nenv (0.3.0)
-    nio4r (2.3.1)
+    nio4r (2.5.1)
     nokogiri (1.8.2)
       mini_portile2 (~> 2.3.0)
     nokogiri (1.8.2-x64-mingw32)
@@ -192,7 +192,7 @@ GEM
       sprockets (>= 3.0.0)
     sqlite3 (1.3.13)
     sqlite3 (1.3.13-x64-mingw32)
-    stateful_enum (0.4.0)
+    stateful_enum (0.6.0)
     term-ansicolor (1.6.0)
       tins (~> 1.0)
     thor (0.19.4)
@@ -202,9 +202,9 @@ GEM
       thread_safe (~> 0.1)
     tzinfo-data (1.2018.5)
       tzinfo (>= 1.0.0)
-    websocket-driver (0.7.0)
+    websocket-driver (0.7.1)
       websocket-extensions (>= 0.1.0)
-    websocket-extensions (0.1.3)
+    websocket-extensions (0.1.4)
 
 PLATFORMS
   ruby
@@ -222,4 +222,4 @@ DEPENDENCIES
   tzinfo-data
 
 BUNDLED WITH
-   1.17.1
+   1.17.2
