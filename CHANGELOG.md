@@ -1,3 +1,6 @@
+## 1.1.7 (2019/09/12)
+* Adds rails 6 compatibility ([#68](https://github.com/sungwoncho/has_friendship/pull/68)) [@Yinfei](https://github.com/Yinfei)
+
 ## 1.1.6 (2018/12/08)
 * Add create destroy after hook specs ([#66](https://github.com/sungwoncho/has_friendship/pull/66)) [@chevinbrown](https://github.com/chevinbrown)
 * Fix migration copying command in README.md ([#65](https://github.com/sungwoncho/has_friendship/pull/65)) [@KubaSemczuk](https://github.com/KubaSemczuk)
