@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    has_friendship (1.1.7)
+    has_friendship (1.1.8)
       activemodel (>= 4.2.0, < 6.1)
       activerecord (>= 4.2.0, < 6.1)
       activesupport (>= 4.2.0, < 6.1)
