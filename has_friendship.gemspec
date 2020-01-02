@@ -1,3 +1,5 @@
+RAILS_VERSIONS = ['>= 4.2.0', '< 6.1'].freeze
+
 $:.push File.expand_path("../lib", __FILE__)
 
 # Maintain your gem's version:
@@ -16,7 +18,10 @@ Gem::Specification.new do |s|
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
   s.required_ruby_version = '>= 2.4.1'
 
-  s.add_dependency "rails", ['>= 4.2.0', '<= 6.0.0']
+  s.add_dependency "activesupport", RAILS_VERSIONS
+  s.add_dependency "activemodel", RAILS_VERSIONS
+  s.add_dependency "activerecord", RAILS_VERSIONS
+
   s.add_dependency "stateful_enum"
 
   s.add_development_dependency "sqlite3"
