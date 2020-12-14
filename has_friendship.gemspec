@@ -1,4 +1,4 @@
-RAILS_VERSIONS = ['>= 4.2.0', '< 6.1'].freeze
+RAILS_VERSIONS = ['>= 4.2.0', '< 6.2'].freeze
 
 $:.push File.expand_path("../lib", __FILE__)
 
