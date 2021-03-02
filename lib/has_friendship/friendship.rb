@@ -20,15 +20,16 @@ module HasFriendship
       end
 
       event :block do
-        before do
-          self.blocker_id = self.friendable.id
-        end
-
         after do
           friendable.on_friendship_blocked(self)
         end
         transition all - [:blocked] => :blocked
       end
+    end
+
+    def block_by(blocker)
+      self.blocker_id = blocker.id
+      self.block!
     end
 
     def self.relation_attributes(one, other, status: nil)
