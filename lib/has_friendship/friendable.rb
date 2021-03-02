@@ -81,6 +81,15 @@ module HasFriendship
         end
       end
 
+      def blocked_users
+        friendships.where(friendships: { status: :blocked, blocker_id: self })
+            .map(&:friend)
+      end
+
+      def blocked_by?(user)
+        user.blocked_users.include?(self)
+      end
+
       def unblock_friend(friend)
         return unless has_blocked(friend)
         on_relation_with(friend) do |one, other|
