@@ -1,6 +1,7 @@
 module HasFriendship
   class Friendship < ActiveRecord::Base
     validate :satisfy_custom_conditions
+    has_secure_token :invitation_token
 
     after_create do |record|
       friend.on_friendship_created(record)
