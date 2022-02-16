@@ -1,3 +1,7 @@
+## 1.1.8 (2019/09/12)
+* Relax rails dependency ([#78](https://github.com/sungwoncho/has_friendship/pull/78)) [@MaximeD](https://github.com/MaximeD)
+* Bump loofah
+
 ## 1.1.7 (2019/09/12)
 * Adds rails 6 compatibility ([#68](https://github.com/sungwoncho/has_friendship/pull/68)) [@Yinfei](https://github.com/Yinfei)
 

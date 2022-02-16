@@ -1,8 +1,10 @@
 PATH
   remote: .
   specs:
-    has_friendship (1.1.7)
-      rails (>= 4.2.0, <= 6.0.0)
+    has_friendship (1.1.8)
+      activemodel (>= 4.2.0, < 6.2)
+      activerecord (>= 4.2.0, < 6.2)
+      activesupport (>= 4.2.0, < 6.2)
       stateful_enum
 
 GEM
@@ -53,7 +55,7 @@ GEM
     builder (3.2.3)
     byebug (10.0.2)
     coderay (1.1.2)
-    concurrent-ruby (1.1.5)
+    concurrent-ruby (1.1.7)
     coveralls (0.8.21)
       json (>= 1.8, < 3)
       simplecov (~> 0.14.1)
@@ -70,8 +72,6 @@ GEM
     generator_spec (0.9.4)
       activesupport (>= 3.0.0)
       railties (>= 3.0.0)
-    globalid (0.4.2)
-      activesupport (>= 4.2.0)
     guard (2.14.2)
       formatador (>= 0.2.4)
       listen (>= 2.7, < 4.0)
@@ -86,7 +86,7 @@ GEM
       guard (~> 2.1)
       guard-compat (~> 1.1)
       rspec (>= 2.99.0, < 4.0)
-    i18n (1.7.0)
+    i18n (1.8.5)
       concurrent-ruby (~> 1.0)
     json (2.1.0)
     listen (3.1.5)
@@ -105,7 +105,7 @@ GEM
     mimemagic (0.3.3)
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
-    minitest (5.13.0)
+    minitest (5.14.2)
     nenv (0.3.0)
     nio4r (2.5.2)
     nokogiri (1.10.5)
@@ -172,24 +172,17 @@ GEM
     rspec-support (3.7.1)
     ruby_dep (1.5.0)
     shellany (0.0.1)
-    shoulda (3.5.0)
-      shoulda-context (~> 1.0, >= 1.0.1)
-      shoulda-matchers (>= 1.4.1, < 3.0)
-    shoulda-context (1.2.2)
-    shoulda-matchers (2.8.0)
-      activesupport (>= 3.0.0)
+    shoulda (4.0.0)
+      shoulda-context (~> 2.0)
+      shoulda-matchers (~> 4.0)
+    shoulda-context (2.0.0)
+    shoulda-matchers (4.4.1)
+      activesupport (>= 4.2.0)
     simplecov (0.14.1)
       docile (~> 1.1.0)
       json (>= 1.8, < 3)
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.2)
-    sprockets (3.7.2)
-      concurrent-ruby (~> 1.0)
-      rack (> 1, < 3)
-    sprockets-rails (3.2.1)
-      actionpack (>= 4.0)
-      activesupport (>= 4.0)
-      sprockets (>= 3.0.0)
     sqlite3 (1.3.13)
     sqlite3 (1.3.13-x64-mingw32)
     stateful_enum (0.6.0)
@@ -198,13 +191,10 @@ GEM
     thor (0.19.4)
     thread_safe (0.3.6)
     tins (1.16.3)
-    tzinfo (1.2.5)
+    tzinfo (1.2.8)
       thread_safe (~> 0.1)
     tzinfo-data (1.2018.5)
       tzinfo (>= 1.0.0)
-    websocket-driver (0.7.1)
-      websocket-extensions (>= 0.1.0)
-    websocket-extensions (0.1.4)
 
 PLATFORMS
   ruby
@@ -222,4 +212,4 @@ DEPENDENCIES
   tzinfo-data
 
 BUNDLED WITH
-   1.17.2
+   2.1.4

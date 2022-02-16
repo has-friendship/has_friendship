@@ -1,4 +1,6 @@
-# HasFriendship [![Build Status](https://travis-ci.org/sungwoncho/has_friendship.svg?branch=master)](https://travis-ci.org/sungwoncho/has_friendship) [![Coverage Status](https://coveralls.io/repos/sungwoncho/has_friendship/badge.png?branch=master)](https://coveralls.io/r/sungwoncho/has_friendship?branch=master)
+# (UNMAINTAINED) HasFriendship [![Build Status](https://travis-ci.org/sungwoncho/has_friendship.svg?branch=master)](https://travis-ci.org/sungwoncho/has_friendship) [![Coverage Status](https://coveralls.io/repos/sungwoncho/has_friendship/badge.png?branch=master)](https://coveralls.io/r/sungwoncho/has_friendship?branch=master)
+
+Maintainer or owner wanted: https://github.com/sungwoncho/has_friendship/issues/86
 
 Add friendship features to your ActiveRecord models.
 
@@ -176,12 +178,3 @@ def on_friendship_destroyed(friendship)
   ...
 end
 ```
-
-## Roadmap
-
-Thanks for all the contributors. Pull requests are encouraged for the following
-features.
-
-- [ ] Make a separate table/model for friendship blocking records, with `blocker_id`
-and `blockee_id`. Currently, `Friendship` model is kind of bloated.
-- [x] Implement state machine for friendship status. ([#24](https://github.com/sungwoncho/has_friendship/pull/24))
