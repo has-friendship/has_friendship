@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe HasFriendship::Friendship do
+describe HasFriendship::Friendship, type: :model do
 
   let(:user){ User.create(name: "Jessie") }
   let(:friend){ User.create(name: "Heisenberg") }
