@@ -1,4 +1,6 @@
 module HasFriendship
+  FRIENDSHIP_ENUM_VALUES = { pending: 0, requested: 1, accepted: 2, blocked: 3 }
+
   class Friendship < ActiveRecord::Base
     validate :satisfy_custom_conditions
 
@@ -12,7 +14,13 @@ module HasFriendship
 
     attr_reader :status_was
 
-    enum :status, { pending: 0, requested: 1, accepted: 2, blocked: 3 } do
+    if Rails.gem_version >= Gem::Version.new('7.0')
+        stats_def = [ :status, FRIENDSHIP_ENUM_VALUES ]
+    else
+        stats_def = [ status: FRIENDSHIP_ENUM_VALUES ]
+    end
+
+    enum *stats_def do
       event :accept do
         before do
           @status_was = self.status
