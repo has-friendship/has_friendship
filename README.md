@@ -1,6 +1,4 @@
-# (UNMAINTAINED) HasFriendship [![Build Status](https://travis-ci.org/sungwoncho/has_friendship.svg?branch=master)](https://travis-ci.org/sungwoncho/has_friendship) [![Coverage Status](https://coveralls.io/repos/sungwoncho/has_friendship/badge.png?branch=master)](https://coveralls.io/r/sungwoncho/has_friendship?branch=master)
-
-Maintainer or owner wanted: https://github.com/sungwoncho/has_friendship/issues/86
+# HasFriendship [![Build Status](https://travis-ci.org/sungwoncho/has_friendship.svg?branch=master)](https://travis-ci.org/sungwoncho/has_friendship) [![Coverage Status](https://coveralls.io/repos/sungwoncho/has_friendship/badge.png?branch=master)](https://coveralls.io/r/sungwoncho/has_friendship?branch=master)
 
 Add friendship features to your ActiveRecord models.
 
@@ -8,24 +6,32 @@ Add friendship features to your ActiveRecord models.
 
 ## Getting started
 
-Add *HasFriendship* to your Gemfile:
+### Setup
+To start using *HasFriendship* in an ActiveRecord Model, simply add `has_friendship` to the model file:
 
 ```ruby
 gem 'has_friendship'
 ```
 
-After you bundle *HasFriendship*, you need to copy migrations and migrate:
+When *HasFriendship* is bundled into your application, a new Rake task called
+`has_friendship_engine:install:migrations` will be added. Use this Rake task to
+generate the database migration, and then apply it to your project:
 
     $ rails has_friendship_engine:install:migrations
-    $ rake db:migrate
+    $ # (inspect the migration files, and change if necessary)
+    $ rails db:migrate
+
+By default, the friendship table uses integer as the `friend_id` datatype. If
+your project requires a different datatype, like a UUID, then you'll need to
+edit the migration file before running the migration.
 
 ## Gem upgrades
 
-After gem updates, it may be necessary to run subsequent migrations.
+After this gem is updated, there may be new migrations that are needed. If so,
+you will be prompted to rerun `rails has_friendship_engine:install:migrations`
+and apply the latest changes. (The rake task won't do anything if no new
+migrations are needed.)
 
-    $ rails has_friendship_engine:install:migrations
-
-Will install _new_ migrations if they're necessary.
 
 ## Usage
 
@@ -178,3 +184,18 @@ def on_friendship_destroyed(friendship)
   ...
 end
 ```
+
+
+## How To Build
+
+Clone the repo, go into the top directory, and run `bundle install`. Then, run
+`bundle exec rake spec` to run all the RSpec test cases. Finally, run `bundle
+exec rake build` to actually build the Gem.
+
+Note that there is a small instance of Rails in the `spec/` environment. If you
+need to make changes to Rails environment, and want to run the Rails commands,
+you should:
+    1. `cd spec/internal/`
+    2. `bundle exec --gemfile ../../Gemfile -- ${your_command}`
+
+

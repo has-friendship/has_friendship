@@ -12,7 +12,7 @@ module HasFriendship
 
     attr_reader :status_was
 
-    enum status: { pending: 0, requested: 1, accepted: 2, blocked: 3 } do
+    enum :status, { pending: 0, requested: 1, accepted: 2, blocked: 3 } do
       event :accept do
         before do
           @status_was = self.status

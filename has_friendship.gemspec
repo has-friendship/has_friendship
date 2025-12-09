@@ -1,4 +1,4 @@
-RAILS_VERSIONS = ['>= 4.2.0', '< 6.2'].freeze
+RAILS_VERSIONS = ['>= 4.2.0'].freeze
 
 $:.push File.expand_path("../lib", __FILE__)
 
@@ -33,5 +33,10 @@ Gem::Specification.new do |s|
   s.add_development_dependency "byebug"
   # fix time zone error when opening server
   s.add_development_dependency 'tzinfo-data'
+  s.add_development_dependency 'base64'
+  s.add_development_dependency 'drb'
+  s.add_development_dependency "mutex_m"
+  s.add_development_dependency "benchmark"
+
 
 end
