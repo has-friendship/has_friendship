@@ -11,3 +11,4 @@ spec/tmp/*
 coverage/
 tmp/
 .DS_STORE
+vendor/

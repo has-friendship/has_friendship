@@ -10,7 +10,15 @@ AddUniqueIndexToFriendships.class_eval do
   def self.up
     return if index_exists?(:friendships, [:friendable_id, :friend_id])
 
-    add_index :friendships, [:friendable_id, :friend_id], unique: true, algorithm: :concurrently
+    options = { unique: true }
+
+    if connection.adapter_name.downcase.include?('mysql') ||
+        connection.adapter_name.downcase.include?('postgres')
+      # These are the only DB adapters that support an index algorithm.
+      options[:algorithm] = :concurrently
+    end
+
+    add_index :friendships, [:friendable_id, :friend_id], **options
   end
 
   def self.down
