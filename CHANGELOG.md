@@ -1,3 +1,8 @@
+## 1.2.0 (2025/12/15)
+* Added support for Rails 7 and 8 ([#89](https://github.com/has-friendship/has_friendship/pull/89)) [@paulwalrath](https://github.com/paulwalrath)
+* Added compatibility layer for older Rails versions
+* Updated bundle dependencies
+
 ## 1.1.8 (2019/09/12)
 * Relax rails dependency ([#78](https://github.com/sungwoncho/has_friendship/pull/78)) [@MaximeD](https://github.com/MaximeD)
 * Bump loofah
