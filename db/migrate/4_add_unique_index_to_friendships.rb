@@ -12,8 +12,9 @@ AddUniqueIndexToFriendships.class_eval do
 
     options = { unique: true }
 
-    if connection.adapter_name.downcase.include?('mysql') ||
-        connection.adapter_name.downcase.include?('postgres')
+    adapter_name = connection.adapter_name.downcase
+    if adapter_name.include?('mysql') || adapter_name.include?('postgres')
+        adapter_name.include?('postgis')
       # These are the only DB adapters that support an index algorithm.
       options[:algorithm] = :concurrently
     end

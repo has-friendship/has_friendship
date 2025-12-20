@@ -12,3 +12,14 @@ coverage/
 tmp/
 .DS_STORE
 vendor/
+
+#
+# From the Appraisal documentation:
+#
+# Version Control for Appraisal files
+# When using Appraisal, we recommend you check in the Gemfiles that
+# Appraisal generates within the gemfiles directory, but exclude the
+# lockfiles there (*.gemfile.lock.) The Gemfiles are useful when
+# running your tests against a continuous integration server.
+#
+gemfiles/*.lock
