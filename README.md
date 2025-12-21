@@ -195,7 +195,5 @@ exec rake build` to actually build the Gem.
 Note that there is a small instance of Rails in the `spec/` environment. If you
 need to make changes to Rails environment, and want to run the Rails commands,
 you should:
-    1. `cd spec/internal/`
-    2. `bundle exec --gemfile ../../Gemfile -- ${your_command}`
-
-
+1. `cd spec/internal/`
+2. `bundle exec --gemfile ../../Gemfile -- ${your_command}`
