@@ -291,7 +291,7 @@ describe User, type: :model do
           friendship = find_friendship_record(user, friend)
 
           expect(friendship.friendable).to receive(:on_friendship_blocked)
-          friendship.block!
+          friendship.block_by(friend)
         end
       end
     end
