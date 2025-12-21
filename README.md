@@ -197,3 +197,11 @@ need to make changes to Rails environment, and want to run the Rails commands,
 you should:
 1. `cd spec/internal/`
 2. `bundle exec --gemfile ../../Gemfile -- ${your_command}`
+
+## How to test
+
+You can run the RSpec tests in your development environment by running
+`bundle exec rake spec`.
+
+Or, if you wish to run the compatibility tests on different versions of Rails, you can run the *Appraisals*-based tests by running `bundle exec appraisal rake spec`.
+
