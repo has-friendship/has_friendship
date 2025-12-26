@@ -89,6 +89,10 @@ remove friendship to the one that initially blocked it.
 ```ruby
 # Check if there is an accepted friendship between @mac and @dee
 @mac.friends_with?(@dee)
+
+# Check the status between two friends
+@mac.friendship_status(@dee) # => "pending"
+
 ```
 
 ### Type of friends
