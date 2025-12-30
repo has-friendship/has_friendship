@@ -9,8 +9,8 @@ require "has_friendship/version"
 Gem::Specification.new do |s|
   s.name        = "has_friendship"
   s.version     = HasFriendship::VERSION
-  s.authors     = ["Sung Won Cho"]
-  s.email       = ["mikeswcho@gmail.com"]
+  s.authors     = ["Sung Won Cho", "Paul Walrath"]
+  s.email       = ["mikeswcho@gmail.com", "paul@walrath.ca"]
   s.homepage    = "https://github.com/sungwoncho/has_friendship"
   s.summary     = "Add social network friendship features to your Active Record models."
   s.license     = "MIT"
