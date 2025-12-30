@@ -197,22 +197,25 @@ describe User, type: :model do
       end
 
       context "when friend is blocked" do
-        it "should no longer be friends" do
+        subject do
           create_friendship(user, friend)
           user.block_friend(friend)
+        end
+
+        it "should no longer be friends" do
+          subject
           expect(HasFriendship::Friendship.find_unblocked_friendship(user, friend).present?).to eq false
         end
 
         it "should remain in the database" do
-          create_friendship(user, friend)
-          user.block_friend(friend)
+          subject
           expect(find_friendship_record(user,friend).present?).to eq true
         end
 
-        it 'saves who blocked the friendable' do
-          create_friendship(user, friend)
-          user.block_friend(friend)
+        it 'saves user_id of who did the blocking' do
+          subject
           expect(find_friendship_record(user, friend).blocker_id).to eq user.id
+          expect(find_friendship_record(friend, user).blocker_id).to eq user.id
         end
       end
     end

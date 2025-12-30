@@ -1,3 +1,6 @@
+## 1.2.1 (2025/12/29)
+* Fix to blocking functionality, so that only the blocking user can remove the block ([#82](https://github.com/has-friendship/has_friendship/pull/82)) [@toddsutt](https://github.com/toddsutt)
+
 ## 1.2.0 (2025/12/15)
 * Added support for Rails 7 and 8 ([#89](https://github.com/has-friendship/has_friendship/pull/89)) [@paulwalrath](https://github.com/paulwalrath)
 * Added compatibility layer for older Rails versions
