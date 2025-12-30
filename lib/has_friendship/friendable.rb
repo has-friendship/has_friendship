@@ -82,7 +82,7 @@ module HasFriendship
       end
 
       def unblock_friend(friend)
-        return unless has_blocked(friend)
+        return unless has_blocked?(friend)
         on_relation_with(friend) do |one, other|
           HasFriendship::Friendship.find_blocked_friendship(one, other).destroy
         end
@@ -101,7 +101,7 @@ module HasFriendship
 
       private
 
-      def has_blocked(friend)
+      def has_blocked?(friend)
         HasFriendship::Friendship.find_one_side(self, friend).blocker_id == self.id
       end
 
