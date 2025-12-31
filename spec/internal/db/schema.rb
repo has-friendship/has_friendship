@@ -10,16 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 4) do
+ActiveRecord::Schema.define(version: 5) do
   create_table "friendships", force: :cascade do |t|
-    t.string "friendable_type"
-    t.integer "friendable_id"
-    t.integer "friend_id"
     t.integer "blocker_id"
-    t.integer "status"
     t.datetime "created_at"
+    t.integer "friend_id"
+    t.integer "friendable_id"
+    t.string "friendable_type"
+    t.integer "status"
     t.datetime "updated_at"
-    t.index ["friendable_id", "friend_id"], name: "index_friendships_on_friendable_id_and_friend_id", unique: true
+    t.index ["friendable_type", "friendable_id", "friend_id"], name: "unique_friendships_index", unique: true
   end
 
   create_table "pets", force: :cascade do |t|
@@ -29,8 +29,8 @@ ActiveRecord::Schema.define(version: 4) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "name"
     t.datetime "created_at"
+    t.string "name"
     t.datetime "updated_at"
   end
 end
