@@ -1,4 +1,4 @@
-# HasFriendship [![Build Status](https://travis-ci.org/sungwoncho/has_friendship.svg?branch=master)](https://travis-ci.org/sungwoncho/has_friendship) [![Coverage Status](https://coveralls.io/repos/sungwoncho/has_friendship/badge.png?branch=master)](https://coveralls.io/r/sungwoncho/has_friendship?branch=master)
+# HasFriendship [![spec](https://github.com/has-friendship/has_friendship/actions/workflows/spec.yml/badge.svg)](https://github.com/has-friendship/has_friendship/actions/workflows/spec.yml)
 
 Add friendship features to your ActiveRecord models.
 

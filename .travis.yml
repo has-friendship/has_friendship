@@ -1,8 +1,0 @@
-language: ruby
-cache: bundler
-
-rvm:
-  - 3.4
-  - 3.3
-  - 3.2
-  - 2.7
